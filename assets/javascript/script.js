@@ -1,62 +1,84 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const searchButton = document.querySelector('.search-bar button');
-  const searchInput = document.querySelector('.search-bar input');
-  const mainContent = document.querySelector('main');
-  const languageTagsContainer = document.querySelector('.language-tags');
-  let articleContainer = document.getElementById('initial-content');
+/**
+ * CodeImag.in Application Logic
+ * Refactored for better maintainability and structure.
+ */
 
-  // 🔹 Aqui vamos armazenar o conteúdo do data.json
-  let techData = [];
+const CONFIG = {
+  API_URL: 'https://base-conhecimento-api-m3db.onrender.com/chat',
+  DATA_URL: './assets/data/data.json',
+  SELECTORS: {
+    SEARCH_BUTTON: '.search-bar button',
+    SEARCH_INPUT: '.search-bar input',
+    MAIN_CONTENT: 'main',
+    LANGUAGE_TAGS: '.language-tags',
+    INITIAL_CONTENT: '#initial-content',
+  },
+  ALIASES: {
+    js: 'javascript',
+    ts: 'typescript',
+    'c#': 'c#',
+    'c++': 'c++',
+    node: 'node.js',
+    nodejs: 'node.js',
+    html: 'html5',
+    css: 'css3',
+  },
+};
 
-  const normalize = (str) =>
-    (str || '').toString().trim().toLowerCase();
+class CodeImaginApp {
+  constructor() {
+    this.elements = {
+      searchButton: document.querySelector(CONFIG.SELECTORS.SEARCH_BUTTON),
+      searchInput: document.querySelector(CONFIG.SELECTORS.SEARCH_INPUT),
+      mainContent: document.querySelector(CONFIG.SELECTORS.MAIN_CONTENT),
+      languageTagsContainer: document.querySelector(CONFIG.SELECTORS.LANGUAGE_TAGS),
+      articleContainer: document.querySelector(CONFIG.SELECTORS.INITIAL_CONTENT),
+    };
+    this.techData = [];
+  }
 
-  const loadTechData = async () => {
+  async init() {
+    this.techData = await this.loadTechData();
+    this.loadQuickLinks();
+    this.bindEvents();
+  }
+
+  normalize(str) {
+    return (str || '').toString().trim().toLowerCase();
+  }
+
+  async loadTechData() {
     try {
-      // ajuste o caminho se precisar: '/assets/data.json', etc.
-      const res = await fetch('./assets/data/data.json');
+      const res = await fetch(CONFIG.DATA_URL);
       if (!res.ok) {
-        console.error('Falha ao carregar data.json:', res.status, res.statusText);
+        console.error('Failed to load data.json:', res.status, res.statusText);
         return [];
       }
       const json = await res.json();
       if (!Array.isArray(json)) {
-        console.error('data.json não é um array, verifique o formato.');
+        console.error('data.json is not an array.');
         return [];
       }
       return json;
     } catch (err) {
-      console.error('Erro ao buscar data.json:', err);
+      console.error('Error fetching data.json:', err);
       return [];
     }
-  };
+  }
 
-  const findTechByLanguage = (language) => {
-    const langNorm = normalize(language);
-
+  findTechByLanguage(language) {
+    const langNorm = this.normalize(language);
     if (!langNorm) return null;
 
-    // alguns aliases simples
-    const aliasMap = {
-      js: 'javascript',
-      ts: 'typescript',
-      'c#': 'c#',
-      'c++': 'c++',
-      'node': 'node.js',
-      'nodejs': 'node.js',
-      'html': 'html5',
-      'css': 'css3'
-    };
-
-    const mappedLang = aliasMap[langNorm] || langNorm;
+    const mappedLang = CONFIG.ALIASES[langNorm] || langNorm;
 
     return (
-      techData.find((t) => normalize(t.label) === mappedLang) ||
-      techData.find((t) => normalize(t.query) === mappedLang)
+      this.techData.find((t) => this.normalize(t.label) === mappedLang) ||
+      this.techData.find((t) => this.normalize(t.query) === mappedLang)
     );
-  };
+  }
 
-  const createTagElement = (item) => {
+  createTagElement(item) {
     const tag = document.createElement('a');
     tag.href = '#';
     tag.className = 'language-tag';
@@ -75,8 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
       iconWrapper.appendChild(img);
     } else {
       iconWrapper.classList.add('tag-icon--fallback');
-      iconWrapper.textContent =
-        item.initials || item.label.slice(0, 3).toUpperCase();
+      iconWrapper.textContent = item.initials || item.label.slice(0, 3).toUpperCase();
       iconWrapper.setAttribute('aria-hidden', 'true');
     }
 
@@ -88,28 +109,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
     tag.addEventListener('click', (event) => {
       event.preventDefault();
-      handleSearch(item.query || item.label);
+      this.handleSearch(item.query || item.label);
     });
 
     return tag;
-  };
+  }
 
-  const loadQuickLinks = () => {
-    if (!languageTagsContainer) return;
+  loadQuickLinks() {
+    if (!this.elements.languageTagsContainer) return;
 
-    languageTagsContainer.innerHTML = '';
-
-    // Se quiser limitar a quantidade exibida, pode fazer um slice aqui
-    techData.forEach((item) => {
-      languageTagsContainer.appendChild(createTagElement(item));
+    this.elements.languageTagsContainer.innerHTML = '';
+    this.techData.forEach((item) => {
+      this.elements.languageTagsContainer.appendChild(this.createTagElement(item));
     });
-  };
+  }
 
-  const renderResult = ({ query, answer, docsUrl, language }) => {
-    if (!articleContainer || !mainContent.contains(articleContainer)) {
-      articleContainer = document.createElement('div');
-      mainContent.prepend(articleContainer);
+  getOrCreateArticleContainer() {
+    if (!this.elements.articleContainer || !this.elements.mainContent.contains(this.elements.articleContainer)) {
+      this.elements.articleContainer = document.createElement('div');
+      this.elements.mainContent.prepend(this.elements.articleContainer);
     }
+    return this.elements.articleContainer;
+  }
+
+  renderResult({ query, answer, docsUrl, language }) {
+    const container = this.getOrCreateArticleContainer();
 
     const docLinkMarkup = docsUrl
       ? `<p class="doc-link">
@@ -123,11 +147,10 @@ document.addEventListener('DOMContentLoaded', () => {
     let helloWorldMarkup = '';
 
     if (language) {
-      const tech = findTechByLanguage(language);
+      const tech = this.findTechByLanguage(language);
       const snippetHtml = tech?.snippet_html;
 
       if (snippetHtml) {
-        // snippet_html já vem com spans (.keyword, .string, etc.)
         helloWorldMarkup = `
           <section class="code-example">
             <h3>Exemplo clássico em ${tech.label}</h3>
@@ -137,9 +160,9 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    articleContainer.innerHTML = `
+    container.innerHTML = `
       <div class="hero-copy">
-        <a href="https://henriquesilva.dev/imersao-dev-2025/aula-2/" class="hero-kicker">Voltar a Info</a>
+        <a href="/" class="hero-kicker">Voltar a Info</a>
 
         <h2>Resultado para "${query}"</h2>
         <p class="hero-lead">${answer || ''}</p>
@@ -147,60 +170,48 @@ document.addEventListener('DOMContentLoaded', () => {
         ${helloWorldMarkup}
       </div>      
       `;
-  };
+  }
 
-  const handleSearch = async (predefinedQuery) => {
-    const query = predefinedQuery || searchInput.value.trim();
+  async handleSearch(predefinedQuery) {
+    const query = predefinedQuery || this.elements.searchInput.value.trim();
     if (!query) return;
 
-    searchInput.value = `O que é ${query}?`;
-
-    if (!articleContainer || !mainContent.contains(articleContainer)) {
-      articleContainer = document.createElement('div');
-      mainContent.prepend(articleContainer);
-    }
-
-    articleContainer.innerHTML = '<p class="loading">Buscando...</p>';
+    this.elements.searchInput.value = `O que é ${query}?`;
+    const container = this.getOrCreateArticleContainer();
+    container.innerHTML = '<p class="loading">Buscando...</p>';
 
     try {
-      const response = await fetch(
-        'https://base-conhecimento-api-m3db.onrender.com/chat',
-        {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ message: `O que é ${query}?` })
-        }
-      );
+      const response = await fetch(CONFIG.API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: `O que é ${query}?` }),
+      });
 
       const data = await response.json();
-
       const answer = data.answer || '';
       const firstSource = data?.sources?.[0] || null;
       const docsUrl = firstSource?.metadata?.docs_url || null;
       const language = firstSource?.metadata?.language || null;
 
-      renderResult({ query, answer, docsUrl, language });
+      this.renderResult({ query, answer, docsUrl, language });
     } catch (error) {
-      articleContainer.innerHTML =
-        '<p class="error">Houve um erro ao buscar. Tente novamente.</p>';
-      console.error('Erro na busca:', error);
+      container.innerHTML = '<p class="error">Houve um erro ao buscar. Tente novamente.</p>';
+      console.error('Search error:', error);
     }
-  };
+  }
 
-  const init = async () => {
-    techData = await loadTechData();
-    loadQuickLinks();
-  };
+  bindEvents() {
+    this.elements.searchButton?.addEventListener('click', () => this.handleSearch());
 
-  // Eventos de busca
-  searchButton?.addEventListener('click', () => handleSearch());
+    this.elements.searchInput?.addEventListener('keyup', (event) => {
+      if (event.key === 'Enter') {
+        this.handleSearch();
+      }
+    });
+  }
+}
 
-  searchInput?.addEventListener('keyup', (event) => {
-    if (event.key === 'Enter') {
-      handleSearch();
-    }
-  });
-
-  // Inicializa carregando o data.json e montando as tags
-  init();
+document.addEventListener('DOMContentLoaded', () => {
+  const app = new CodeImaginApp();
+  app.init();
 });
