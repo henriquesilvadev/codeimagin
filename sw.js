@@ -5,7 +5,7 @@ const URLS_TO_CACHE = [
   '/',
   '/index.html',
   '/assets/stylesheet/styles.css',
-  '/script.js',
+  '/assets/javascript/script.js',
   '/manifest.webmanifest'
 ];
 
