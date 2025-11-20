@@ -16,14 +16,16 @@ body {
   flex-direction: column;
   min-height: 100vh;
   line-height: 1.6;
-  padding: 0 16px; /* mobile first: lateral menor */
+  padding: 0 16px;
+  /* mobile first: lateral menor */
 }
 
 /* ===== HEADER – MOBILE FIRST ===== */
 
 header {
   display: flex;
-  flex-direction: column; /* empilha no mobile */
+  flex-direction: column;
+  /* empilha no mobile */
   align-items: stretch;
   gap: 12px;
   padding: 16px 0;
@@ -45,7 +47,8 @@ h1 {
   flex-direction: column;
   align-items: stretch;
   width: 100%;
-  margin-left: 0; /* sem recuo no mobile */
+  margin-left: 0;
+  /* sem recuo no mobile */
   gap: 8px;
 }
 
@@ -54,7 +57,8 @@ h1 {
   padding: 12px;
   font-size: 1rem;
   border: 1px solid #812B8C;
-  border-radius: 999px; /* pill completo no mobile */
+  border-radius: 999px;
+  /* pill completo no mobile */
   background-color: #242614;
   color: #EAEAEA;
   outline: none;
@@ -138,9 +142,11 @@ main {
 .language-tags::-webkit-scrollbar {
   height: 4px;
 }
+
 .language-tags::-webkit-scrollbar-track {
   background: transparent;
 }
+
 .language-tags::-webkit-scrollbar-thumb {
   background: rgba(129, 43, 140, 0.7);
   border-radius: 999px;
@@ -159,7 +165,8 @@ main {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  flex: 0 0 auto; /* vira "chip" rolável */
+  flex: 0 0 auto;
+  /* vira "chip" rolável */
 }
 
 .language-tag .tag-icon {
@@ -243,12 +250,29 @@ main {
 }
 
 /* Monokai-ish */
-.code-block .keyword { color: #66d9ef; }
-.code-block .string  { color: #e6db74; }
-.code-block .number  { color: #ae81ff; }
-.code-block .comment { color: #75715e; }
-.code-block .func    { color: #a6e22e; }
-.code-block .var     { color: #f92672; }
+.code-block .keyword {
+  color: #66d9ef;
+}
+
+.code-block .string {
+  color: #e6db74;
+}
+
+.code-block .number {
+  color: #ae81ff;
+}
+
+.code-block .comment {
+  color: #75715e;
+}
+
+.code-block .func {
+  color: #a6e22e;
+}
+
+.code-block .var {
+  color: #f92672;
+}
 
 /* ===== Ajustes responsivos específicos para o code ===== */
 @media (max-width: 768px) {
@@ -274,37 +298,94 @@ main {
   }
 }
 
-/* ===== FOOTER – MOBILE EMPILHADO ===== */
+/* ===== PROFESSIONAL FOOTER ===== */
 
-footer {
-  text-align: center;
-  padding: 16px 0 20px;
+.main-footer {
+  background-color: #242614;
   border-top: 1px solid #812B8C;
-  font-size: 0.85rem;
-  color: #888;
+  padding: 40px 0 20px;
+  margin-top: 40px;
+  color: #EAEAEA;
 }
 
-.footer-links {
-  list-style: none;
-  margin-bottom: 10px;
+.footer-content {
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  align-items: center;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
-.footer-links li {
-  margin: 0;
+.footer-section h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  background: linear-gradient(to right, #BF247A, #D9731A);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-.footer-links a {
-  color: #BF247A;
+.footer-section h4 {
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+  color: #fff;
+  border-bottom: 2px solid #812B8C;
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+.footer-section p {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #aaa;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 8px;
+}
+
+.footer-section ul li a {
+  color: #ccc;
   text-decoration: none;
-  transition: color 0.3s ease;
+  transition: color 0.3s ease, padding-left 0.3s ease;
 }
 
-.footer-links a:hover {
+.footer-section ul li a:hover {
   color: #D9731A;
+  padding-left: 5px;
+}
+
+.footer-bottom {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(129, 43, 140, 0.3);
+  text-align: center;
+  font-size: 0.85rem;
+  color: #777;
+}
+
+/* Desktop Layout */
+@media (min-width: 768px) {
+  .footer-content {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .footer-section.brand {
+    flex: 2;
+    padding-right: 40px;
+  }
+
+  .footer-section.links,
+  .footer-section.social {
+    flex: 1;
+  }
 }
 
 /* =========================
@@ -313,7 +394,8 @@ footer {
 
 @media (min-width: 768px) {
   body {
-    padding: 0 40px; /* volta ao padding original no PC */
+    padding: 0 40px;
+    /* volta ao padding original no PC */
   }
 
   header {
@@ -333,13 +415,15 @@ footer {
     align-items: center;
     width: 100%;
     flex: 1;
-    margin-left: 40px; /* volta o espaçamento original */
+    margin-left: 40px;
+    /* volta o espaçamento original */
     gap: 0;
   }
 
   .search-bar input[type="text"] {
     padding: 15px;
-    border-radius: 50px 0 0 50px; /* como no seu layout original */
+    border-radius: 50px 0 0 50px;
+    /* como no seu layout original */
   }
 
   .search-bar button {
@@ -359,27 +443,17 @@ footer {
 
   .language-tags {
     justify-content: center;
-    flex-wrap: wrap;     /* volta pro comportamento original */
-    overflow-x: visible; /* sem carrossel no desktop */
+    flex-wrap: wrap;
+    /* volta pro comportamento original */
+    overflow-x: visible;
+    /* sem carrossel no desktop */
   }
 
   .language-tag {
     flex: 0 0 auto;
   }
 
-  footer {
-    font-size: 0.9rem;
-  }
 
-  .footer-links {
-    flex-direction: row;
-    justify-content: center;
-    gap: 15px;
-  }
-
-  .footer-links li {
-    display: inline-block;
-  }
 }
 
 /* HERO provisório */
@@ -443,7 +517,8 @@ footer {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  pointer-events: none; /* evita cliques no vídeo */
+  pointer-events: none;
+  /* evita cliques no vídeo */
 }
 
 /* Overlay escuro para leitura */
@@ -605,7 +680,8 @@ footer {
 .hero-video-wrapper {
   position: relative;
   width: 100%;
-  padding-top: 56.25%; /* 16:9 */
+  padding-top: 56.25%;
+  /* 16:9 */
   border-radius: 16px;
   overflow: hidden;
   border: 1px solid #812b8c;
@@ -692,7 +768,8 @@ footer {
   max-width: 320px;
   margin-left: auto;
   transition: transform 0.3s ease, filter 0.3s ease;
-  margin-top: -200px; /* levanta a imagem */
+  margin-top: -200px;
+  /* levanta a imagem */
 }
 
 /* efeito ao passar o mouse */
@@ -705,7 +782,7 @@ footer {
 .hero-image-float img {
   width: 100%;
   height: auto;
-  display: block;  
+  display: block;
 }
 
 /* mobile first: imagem vai para baixo do texto */
@@ -716,7 +793,8 @@ footer {
   }
 
   .hero-media-right {
-    order: 2; /* continua vindo depois do texto */
+    order: 2;
+    /* continua vindo depois do texto */
   }
 
   .hero-image-float {
@@ -729,9 +807,11 @@ footer {
 
 /* Wrapper do vídeo */
 .hero-video-wrapper {
-  flex: 1;        /* Ocupa metade ou menos */
+  flex: 1;
+  /* Ocupa metade ou menos */
   max-width: 560px;
-  border-radius: 12px; /* opcional: fica mais elegante */
+  border-radius: 12px;
+  /* opcional: fica mais elegante */
   padding: 0;
 }
 
@@ -739,7 +819,8 @@ footer {
 .hero-video {
   width: 100%;
   display: block;
-  object-fit: cover; /* mantém proporção sem cortar errado */
+  object-fit: cover;
+  /* mantém proporção sem cortar errado */
 }
 
 /* ===== BOTÃO FLUTUANTE ===== */
@@ -756,7 +837,8 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #bf247a; /* cor da sua paleta */
+  background: #bf247a;
+  /* cor da sua paleta */
   color: #ffffff;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
   z-index: 9999;
@@ -883,10 +965,14 @@ footer {
 }
 
 @keyframes typing {
-  0%, 80%, 100% {
+
+  0%,
+  80%,
+  100% {
     transform: translateY(0);
     opacity: 0.4;
   }
+
   40% {
     transform: translateY(-4px);
     opacity: 1;
