@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const loadTechData = async () => {
     try {
       // ajuste o caminho se precisar: '/assets/data.json', etc.
-      const res = await fetch('./data.json');
+      const res = await fetch('./assets/data/data.json');
       if (!res.ok) {
         console.error('Falha ao carregar data.json:', res.status, res.statusText);
         return [];

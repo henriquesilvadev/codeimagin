@@ -4,8 +4,8 @@ const CACHE_NAME = 'base-conhecimento-v1';
 const URLS_TO_CACHE = [
   '/',
   '/index.html',
-  '/styles.css',
-  '/script.js',
+  '/assets/stylesheet/styles.css',
+  '/assets/javascript/script.js',
   '/manifest.webmanifest'
 ];
 
