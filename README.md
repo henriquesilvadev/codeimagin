@@ -2,6 +2,7 @@
 
 ![Status do Projeto](https://img.shields.io/badge/Status-Em_Desenvolvimento-green)
 ![Licença](https://img.shields.io/badge/License-MIT-blue)
+[![CodeFactor](https://www.codefactor.io/repository/github/henriquesilvadev/codeimagin/badge)](https://www.codefactor.io/repository/github/henriquesilvadev/codeimagin)
 
 > **Sua base de conhecimento dev rápida e intuitiva.**
 > Explore documentação, exemplos de código e conceitos fundamentais de diversas linguagens e tecnologias em um só lugar.
