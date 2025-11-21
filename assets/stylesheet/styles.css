@@ -843,7 +843,7 @@ main {
 @media (min-width: 1024px) {
   .hero-section {
     margin-top: 2.5rem;
-    padding: 2.4rem 2.4rem;
+    padding: 2.4rem;
   }
 
   .hero-copy h2 {
@@ -1501,29 +1501,16 @@ main {
   margin-bottom: 2rem;
 }
 
+/* Map Container with Hero Glow Effect */
 .map-wrapper {
   max-width: 1200px;
   margin: 0 auto;
   height: 500px;
-  border-radius: 16px;
+  border-radius: 24px;
   overflow: hidden;
   border: 1px solid #812B8C;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   position: relative;
-}
-
-.universities-map {
-  width: 100%;
-  height: 100%;
-  background-color: #242424;
-  /* Fallback */
-}
-
-/* Map Hero Effect (Glow) */
-.map-wrapper {
-  position: relative;
-  border-radius: 24px;
-  /* Match hero border radius */
   z-index: 1;
 }
 
@@ -1543,6 +1530,13 @@ main {
 .map-wrapper:hover::before {
   opacity: 0.8;
   filter: blur(12px);
+}
+
+.universities-map {
+  width: 100%;
+  height: 100%;
+  background-color: #242424;
+  /* Fallback */
 }
 
 /* Custom Map Popup Styling (Professional Google Maps Style) */
