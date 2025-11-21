@@ -1,0 +1,20 @@
+[
+  {
+    "cover": "assets/images/book1.jpg",
+    "title": "Clean Code",
+    "description": "A Handbook of Agile Software Craftsmanship by Robert C. Martin.",
+    "link": "https://www.amazon.com/dp/0132350882"
+  },
+  {
+    "cover": "assets/images/book2.jpg",
+    "title": "The Pragmatic Programmer",
+    "description": "Your Journey to Mastery, 20th Anniversary Edition.",
+    "link": "https://www.amazon.com/dp/0135957052"
+  },
+  {
+    "cover": "assets/images/book3.jpg",
+    "title": "You Don't Know JS Yet",
+    "description": "A deep dive into JavaScript fundamentals.",
+    "link": "https://github.com/getify/You-Dont-Know-JS"
+  }
+]
