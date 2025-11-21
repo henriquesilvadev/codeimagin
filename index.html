@@ -199,13 +199,6 @@
 
   <!-- Floating Actions Group (iPhone Style) -->
   <div class="floating-actions">
-    <button class="floating-btn" id="chatbotBtn" aria-label="Abrir Chatbot" title="Chatbot">
-      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke="currentColor" stroke-width="2"
-          stroke-linecap="round" stroke-linejoin="round" />
-      </svg>
-    </button>
-
     <button class="floating-btn" id="codeEditorFab" aria-label="Abrir Editor de Código" title="Code Editor">
       <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M8 6L4 10L8 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -263,7 +256,7 @@
         </p>
       </section>
 
-      <!-- Link to Coding Dojo -->\n <section class="dojo-section">
+      <section class="dojo-section">
         <a href="https://codingdojo.org" target="_blank" rel="noopener noreferrer" class="dojo-link-card">
           <div class="link-icon">🥋</div>
           <div class="link-content">
@@ -380,16 +373,6 @@
     </div>
   </aside>
 
-  <!-- Code Editor Floating Button -->
-  <button class="code-editor-fab" id="codeEditorFab" aria-label="Abrir Editor de Código">
-    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M8 6L4 10L8 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-      <path d="M16 6L20 10L16 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-        stroke-linejoin="round" />
-      <path d="M12 4L10 20" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-    </svg>
-  </button>
-
   <!-- Code Editor Modal -->
   <div class="code-editor-modal hidden" id="codeEditorModal">
     <div class="code-editor-overlay"></div>
@@ -494,19 +477,6 @@
           if (e.key === 'Escape' && sidebar.classList.contains('active')) {
             sidebar.classList.remove('active');
           }
-        });
-      }
-    })();
-
-    // Chatbot Button
-    (function () {
-      const chatbotBtn = document.getElementById('chatbotBtn');
-      const chatbotContainer = document.getElementById('chatbot-container');
-      const chatbotToggle = document.getElementById('chatbot-toggle');
-
-      if (chatbotBtn && chatbotToggle) {
-        chatbotBtn.addEventListener('click', () => {
-          chatbotToggle.click(); // Trigger existing chatbot
         });
       }
     })();
