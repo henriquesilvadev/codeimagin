@@ -125,8 +125,17 @@ class CodeImaginApp {
   }
 
   getOrCreateArticleContainer() {
+    // Always use the existing hero article element
+    const heroElement = document.querySelector('#hero');
+    if (heroElement) {
+      return heroElement;
+    }
+
+    // Fallback: create new article if hero doesn't exist
     if (!this.elements.articleContainer || !this.elements.mainContent.contains(this.elements.articleContainer)) {
-      this.elements.articleContainer = document.createElement('div');
+      this.elements.articleContainer = document.createElement('article');
+      this.elements.articleContainer.className = 'content-item hero hero-layout';
+      this.elements.articleContainer.id = 'hero';
       this.elements.mainContent.prepend(this.elements.articleContainer);
     }
     return this.elements.articleContainer;
@@ -162,7 +171,7 @@ class CodeImaginApp {
 
     container.innerHTML = `
       <div class="hero-copy">
-        <a href="/" class="hero-kicker">Voltar a Info</a>
+        <a href="/" class="hero-kicker" onclick="location.reload(); return false;">Voltar a Info</a>
 
         <h2>Resultado para "${query}"</h2>
         <p class="hero-lead">${answer || ''}</p>
