@@ -31,8 +31,16 @@
         maxZoom: 19
     }).addTo(map);
 
-    // University Data (Top 10 Tech/Engineering in Brazil)
+    // University Data (Top Tech/Engineering/Education in Brazil)
     const universities = [
+        {
+            name: "Alura",
+            fullName: "Alura Cursos Online",
+            desc: "A maior plataforma de cursos de tecnologia do Brasil.",
+            coords: [-23.5833, -46.6385],
+            color: "#247BA0", // Alura Blue
+            image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80" // Modern Tech Office
+        },
         {
             name: "USP",
             fullName: "Universidade de São Paulo",
@@ -74,12 +82,27 @@
             image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Pr%C3%A9dio_da_Reitoria_da_UFRJ.jpg/800px-Pr%C3%A9dio_da_Reitoria_da_UFRJ.jpg"
         },
         {
+            name: "IMPA",
+            fullName: "Instituto de Matemática Pura e Aplicada",
+            desc: "Centro de excelência mundial em matemática e pesquisa.",
+            coords: [-22.9653, -43.2379],
+            color: "#F25F5C", // Red
+            image: "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=800&q=80" // Generic Math/Science
+        },
+        {
+            name: "FGV",
+            fullName: "Fundação Getulio Vargas (Rio)",
+            desc: "Referência em economia, administração e matemática aplicada.",
+            coords: [-22.9463, -43.1818],
+            color: "#2E5266", // Dark Blue
+            image: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/FGV_-_Rio_de_Janeiro.jpg/800px-FGV_-_Rio_de_Janeiro.jpg"
+        },
+        {
             name: "FIAP",
             fullName: "Faculdade de Informática e Administração Paulista",
             desc: "Focada em tecnologia, inovação e empreendedorismo.",
             coords: [-23.5727, -46.6227],
             color: "#f92672", // Red/Pink
-            image: "https://lh3.googleusercontent.com/p/AF1QipM_yTqF2xXv_yTqF2xXv_yTqF2xXv_yTqF2xXv" // Placeholder/Generic if specific not found, using a generic tech image for now or a reliable placeholder
         },
         {
             name: "PUC-Rio",
@@ -112,11 +135,72 @@
             coords: [-23.5977, -46.6464],
             color: "#812B8C", // Purple Brand
             image: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Escola_Paulista_de_Medicina_-_UNIFESP.jpg/800px-Escola_Paulista_de_Medicina_-_UNIFESP.jpg"
+        },
+        {
+            name: "UFRN",
+            fullName: "Universidade Federal do Rio Grande do Norte",
+            desc: "Polo de desenvolvimento tecnológico no Nordeste.",
+            coords: [-5.8402, -35.2017],
+            color: "#6E8898", // Greyish Blue
+            image: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Museu_C%C3%A2mara_Cascudo_da_UFRN%2C_fachada_do_pr%C3%A9dio_de_exposi%C3%A7%C3%B5es.jpg/800px-Museu_C%C3%A2mara_Cascudo_da_UFRN%2C_fachada_do_pr%C3%A9dio_de_exposi%C3%A7%C3%B5es.jpg"
+        },
+        {
+            name: "UFSC",
+            fullName: "Universidade Federal de Santa Catarina",
+            desc: "Referência em engenharia e tecnologia no Sul.",
+            coords: [-27.6007, -48.5187],
+            color: "#9FB1BC", // Light Grey Blue
+            image: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Pr%C3%A9dio_da_Reitoria_-_Universidade_Federal_de_Santa_Catarina_%28UFSC%29.JPG/800px-Pr%C3%A9dio_da_Reitoria_-_Universidade_Federal_de_Santa_Catarina_%28UFSC%29.JPG"
+        },
+        {
+            name: "UnB",
+            fullName: "Universidade de Brasília",
+            desc: "Excelência acadêmica no coração do Brasil.",
+            coords: [-15.7564, -47.8669],
+            color: "#D3D0CB", // Beige
+            image: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/UNB_Old_Arts_Building.jpg/800px-UNB_Old_Arts_Building.jpg"
+        },
+        {
+            name: "UFPR",
+            fullName: "Universidade Federal do Paraná",
+            desc: "Tradição e inovação em pesquisa científica.",
+            coords: [-25.4269, -49.2619],
+            color: "#E2C044", // Yellow
+            image: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/UFPR_vista_frontal.jpg/800px-UFPR_vista_frontal.jpg"
+        },
+        {
+            name: "UFC",
+            fullName: "Universidade Federal do Ceará",
+            desc: "Destaque em ciências exatas e tecnologia.",
+            coords: [-3.7353, -38.5341],
+            color: "#58A4B0", // Teal
+            image: "https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=800&q=80" // Generic University
+        },
+        {
+            name: "UFBA",
+            fullName: "Universidade Federal da Bahia",
+            desc: "Importante centro de produção de conhecimento no Nordeste.",
+            coords: [-12.9936, -38.5203],
+            color: "#3A506B", // Dark Blue
+            image: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=800&q=80" // Generic University
+        },
+        {
+            name: "UFG",
+            fullName: "Universidade Federal de Goiás",
+            desc: "Forte atuação em pesquisa e inovação no Centro-Oeste.",
+            coords: [-16.5986, -49.2775],
+            color: "#FF6B6B", // Red
+            image: "https://images.unsplash.com/photo-1592280771884-1338c1c9940f?auto=format&fit=crop&w=800&q=80" // Generic University
+        },
+        {
+            name: "UFPA",
+            fullName: "Universidade Federal do Pará",
+            desc: "Maior universidade da Amazônia, vital para a região.",
+            coords: [-1.4758, -48.4567],
+            color: "#6B4226", // Brown
+            image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Campus_Guam%C3%A1_da_UFPA_03.jpg/800px-Campus_Guam%C3%A1_da_UFPA_03.jpg"
         }
     ];
-
-    // Fix for FIAP image (using a better placeholder if needed, or keeping the broken one if I can't find a good one. Let's use a generic tech building image for FIAP to be safe)
-    universities[5].image = "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80"; // Modern office/tech building
 
     // Custom Icon Function
     const createCustomIcon = (color) => {

@@ -1522,15 +1522,16 @@ main {
 
 /* Custom Map Popup Styling (Modern Card) */
 .leaflet-popup-content-wrapper {
-  background: rgba(36, 38, 20, 0.95);
-  backdrop-filter: blur(12px);
-  border: 1px solid #812B8C;
+  background: #000000;
+  backdrop-filter: none;
+  /* Solid black preferred for contrast */
+  border: 1px solid #333;
   border-radius: 12px;
-  color: #EAEAEA;
+  color: #FFFFFF;
   padding: 0;
   /* Remove default padding */
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
 }
 
 .leaflet-popup-content {
@@ -1539,8 +1540,8 @@ main {
 }
 
 .leaflet-popup-tip {
-  background: rgba(36, 38, 20, 0.95);
-  border: 1px solid #812B8C;
+  background: #000000;
+  border: 1px solid #333;
   border-top: none;
   border-left: none;
 }
