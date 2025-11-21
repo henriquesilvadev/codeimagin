@@ -8,7 +8,102 @@ document.addEventListener('DOMContentLoaded', () => {
     initSmoothScroll();
     initTiltEffect();
     initSearchEffects();
+    initCodeBlockEnhancements();
 });
+
+/**
+ * 5. Code Block Enhancements
+ * Adds Maximize and Copy buttons to code blocks.
+ */
+function initCodeBlockEnhancements() {
+    // Observer to handle dynamically added code blocks (e.g., from search results)
+    const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+            mutation.addedNodes.forEach((node) => {
+                if (node.nodeType === 1) { // Element node
+                    // Check if the node itself is a code block or contains one
+                    if (node.matches('.code-block')) {
+                        enhanceCodeBlock(node);
+                    } else if (node.querySelectorAll) {
+                        node.querySelectorAll('.code-block').forEach(enhanceCodeBlock);
+                    }
+                }
+            });
+        });
+    });
+
+    observer.observe(document.body, { childList: true, subtree: true });
+
+    // Enhance existing blocks
+    document.querySelectorAll('.code-block').forEach(enhanceCodeBlock);
+}
+
+function enhanceCodeBlock(codeBlock) {
+    // Prevent double enhancement
+    if (codeBlock.closest('.code-block-wrapper')) return;
+
+    // Create Wrapper
+    const wrapper = document.createElement('div');
+    wrapper.className = 'code-block-wrapper';
+
+    // Create Toolbar
+    const toolbar = document.createElement('div');
+    toolbar.className = 'code-toolbar';
+
+    // Copy Button
+    const copyBtn = document.createElement('button');
+    copyBtn.className = 'code-btn';
+    copyBtn.title = 'Copiar código';
+    copyBtn.innerHTML = `
+    <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+    <span>Copiar</span>
+  `;
+
+    // Maximize Button
+    const maxBtn = document.createElement('button');
+    maxBtn.className = 'code-btn';
+    maxBtn.title = 'Expandir';
+    maxBtn.innerHTML = `
+    <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+    <span>Expandir</span>
+  `;
+
+    // Assemble
+    toolbar.appendChild(copyBtn);
+    toolbar.appendChild(maxBtn);
+
+    // Wrap the code block
+    codeBlock.parentNode.insertBefore(wrapper, codeBlock);
+    wrapper.appendChild(toolbar);
+    wrapper.appendChild(codeBlock);
+
+    // Event Listeners
+    copyBtn.addEventListener('click', () => {
+        const code = codeBlock.innerText;
+        navigator.clipboard.writeText(code).then(() => {
+            const originalText = copyBtn.innerHTML;
+            copyBtn.innerHTML = `<span>Copiado!</span>`;
+            setTimeout(() => {
+                copyBtn.innerHTML = originalText;
+            }, 2000);
+        });
+    });
+
+    maxBtn.addEventListener('click', () => {
+        wrapper.classList.toggle('fullscreen');
+        const isFullscreen = wrapper.classList.contains('fullscreen');
+        maxBtn.innerHTML = isFullscreen
+            ? `<svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg><span>Fechar</span>`
+            : `<svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg><span>Expandir</span>`;
+
+        if (isFullscreen) {
+            document.body.style.overflow = 'hidden'; // Prevent background scroll
+        } else {
+            document.body.style.overflow = '';
+        }
+    });
+}
+
 
 /**
  * 1. Scroll Reveal Animation
