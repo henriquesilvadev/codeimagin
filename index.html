@@ -198,11 +198,99 @@
     </div>
   </footer>
 
+  <!-- Code Editor Floating Button -->
+  <button class="code-editor-fab" id="codeEditorFab" aria-label="Abrir Editor de Código">
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M8 6L4 10L8 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      <path d="M16 6L20 10L16 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round" />
+      <path d="M12 4L10 20" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+    </svg>
+  </button>
+
+  <!-- Code Editor Modal -->
+  <div class="code-editor-modal hidden" id="codeEditorModal">
+    <div class="code-editor-overlay"></div>
+    <div class="code-editor-container">
+      <!-- Header -->
+      <div class="code-editor-header">
+        <div class="code-editor-title">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="code-icon">
+            <path d="M8 6L4 10L8 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" />
+            <path d="M16 6L20 10L16 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" />
+            <path d="M12 4L10 20" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+          </svg>
+          <h3>CodeX - Editor Interativo</h3>
+        </div>
+        <button class="code-editor-close" id="codeEditorClose" aria-label="Fechar Editor">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Split Panes -->
+      <div class="code-editor-panes">
+        <!-- Editor Pane -->
+        <div class="code-editor-pane editor-pane">
+          <div class="pane-header">
+            <span class="pane-title">Editor</span>
+            <span class="pane-hint">Ctrl+Enter para executar</span>
+          </div>
+          <div class="code-editor-wrapper">
+            <div class="line-numbers" id="lineNumbers"></div>
+            <textarea class="code-editor-textarea" id="codeEditorTextarea" spellcheck="false"
+              placeholder="// Digite seu código JavaScript aqui...&#10;console.log('Hello, World!');"></textarea>
+          </div>
+        </div>
+
+        <!-- Output Pane -->
+        <div class="code-editor-pane output-pane">
+          <div class="pane-header">
+            <span class="pane-title">Console</span>
+            <button class="clear-console-btn" id="clearConsoleBtn" title="Limpar Console">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3 6h18M8 6V4a1 1 0 011-1h6a1 1 0 011 1v2m3 0v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6h14z"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </button>
+          </div>
+          <div class="code-editor-output" id="codeEditorOutput">
+            <div class="output-welcome">
+              <p>👋 Bem-vindo ao CodeX!</p>
+              <p>Execute seu código JavaScript e veja os resultados aqui.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="code-editor-footer">
+        <button class="code-editor-btn run-btn" id="runCodeBtn">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 3l14 9-14 9V3z" fill="currentColor" />
+          </svg>
+          Executar Código
+        </button>
+        <button class="code-editor-btn clear-btn" id="clearCodeBtn">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 6h18M8 6V4a1 1 0 011-1h6a1 1 0 011 1v2m3 0v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6h14z"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          Limpar Editor
+        </button>
+      </div>
+    </div>
+  </div>
+
   <script src="assets/javascript/script.js"></script>
   <script src="env.js"></script>
   <script src="assets/javascript/chatbot.js"></script>
   <script src="assets/javascript/effects.js"></script>
   <script src="assets/javascript/video-transition.js"></script>
+  <script src="assets/javascript/code-editor.js"></script>
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
