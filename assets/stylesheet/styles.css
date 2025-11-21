@@ -918,6 +918,11 @@ main {
   display: block;
   object-fit: cover;
   /* mantém proporção sem cortar errado */
+  transition: opacity 0.8s ease;
+}
+
+.hero-video.fade-out {
+  opacity: 0;
 }
 
 /* ===== BOTÃO FLUTUANTE ===== */
@@ -1665,19 +1670,6 @@ main {
 }
 
 /* Video Transition Styles */
-.hero-video-wrapper {
-  position: relative;
-  /* Ensure wrapper can contain absolute positioned elements if needed */
-}
-
-.hero-video {
-  transition: opacity 0.8s ease;
-}
-
-.hero-video.fade-out {
-  opacity: 0;
-}
-
 #youtube-wrapper {
   position: absolute;
   top: 0;
