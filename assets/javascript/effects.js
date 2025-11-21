@@ -77,9 +77,15 @@ function enhanceCodeBlock(codeBlock) {
     wrapper.appendChild(toolbar);
     wrapper.appendChild(codeBlock);
 
+    // Placeholder for fullscreen toggle
+    const placeholder = document.createElement('div');
+    placeholder.style.display = 'none';
+    wrapper.parentNode.insertBefore(placeholder, wrapper);
+
     // Event Listeners
     copyBtn.addEventListener('click', () => {
-        const code = codeBlock.innerText;
+        // Use textContent to get only the text, stripping HTML tags
+        const code = codeBlock.textContent;
         navigator.clipboard.writeText(code).then(() => {
             const originalText = copyBtn.innerHTML;
             copyBtn.innerHTML = `<span>Copiado!</span>`;
@@ -92,14 +98,21 @@ function enhanceCodeBlock(codeBlock) {
     maxBtn.addEventListener('click', () => {
         wrapper.classList.toggle('fullscreen');
         const isFullscreen = wrapper.classList.contains('fullscreen');
-        maxBtn.innerHTML = isFullscreen
-            ? `<svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg><span>Fechar</span>`
-            : `<svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg><span>Expandir</span>`;
 
         if (isFullscreen) {
+            // Move to body to break out of any stacking contexts
+            placeholder.style.display = 'block';
+            document.body.appendChild(wrapper);
             document.body.style.overflow = 'hidden'; // Prevent background scroll
+
+            maxBtn.innerHTML = `<svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg><span>Fechar</span>`;
         } else {
+            // Return to original position
+            placeholder.parentNode.insertBefore(wrapper, placeholder);
+            placeholder.style.display = 'none';
             document.body.style.overflow = '';
+
+            maxBtn.innerHTML = `<svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg><span>Expandir</span>`;
         }
     });
 }
