@@ -1,6 +1,13 @@
 class Chatbot {
     constructor() {
-        this.apiKey = window.CONFIG?.GEMINI_API_KEY;
+        // this.apiKey = window.CONFIG?.GEMINI_API_KEY;
+        // ⚠️ AVISO IMPORTANTE ⚠️
+        // Esta chave está exposta APENAS para fins de DEMONSTRAÇÃO.
+        // NÃO usar este padrão em produção. Em sistemas reais, a chave deve ficar
+        // em um backend seguro ou função serverless.
+        //
+        // Esta chave será revogada após a apresentação da demo.
+        this.apiKey = 'AIzaSyCeHmdAe3aBmWPMa5JvNgBuLg8tdvvSka8';
         this.apiUrl = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent';
         this.isOpen = false;
         this.messages = [];
