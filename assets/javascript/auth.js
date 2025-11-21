@@ -202,7 +202,7 @@
 
         // Initialize Google Sign-In
         google.accounts.id.initialize({
-            client_id: 'YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com', // Replace with your actual Client ID
+            client_id: '760841351048-jlpcferjftleju76filf2rvk4rct5dth.apps.googleusercontent.com', // Replace with your actual Client ID
             callback: handleGoogleCallback,
             auto_select: false,
             cancel_on_tap_outside: true
