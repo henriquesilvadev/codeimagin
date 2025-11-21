@@ -223,11 +223,17 @@
         // Custom Popup Content (Professional Card Style)
         const popupContent = `
       <div class="map-popup-card">
+        ${uni.image ? `
         <div class="map-popup-image-container">
           <img src="${uni.image}" alt="${uni.fullName}" class="map-popup-image" loading="lazy" />
           <div class="map-popup-overlay"></div>
           <h3 class="map-popup-title">${uni.name}</h3>
         </div>
+        ` : `
+        <div class="map-popup-header">
+          <h3 class="map-popup-title-no-image">${uni.name}</h3>
+        </div>
+        `}
         <div class="map-popup-info">
           <h4>${uni.fullName}</h4>
           <p>${uni.desc}</p>
