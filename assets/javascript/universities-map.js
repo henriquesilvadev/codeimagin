@@ -202,14 +202,14 @@
         }
     ];
 
-    // Custom Icon Function
+    // Custom Icon Function (Pin Style)
     const createCustomIcon = (color) => {
         return L.divIcon({
-            className: 'custom-map-marker',
-            html: `<div style="background-color: ${color}; width: 14px; height: 14px; border-radius: 50%; box-shadow: 0 0 15px ${color}; border: 2px solid #fff;"></div>`,
-            iconSize: [18, 18],
-            iconAnchor: [9, 9],
-            popupAnchor: [0, -10]
+            className: 'custom-pin-container', // Wrapper to avoid Leaflet transform issues
+            html: `<div class="custom-map-pin" style="background-color: ${color}; color: ${color};"></div>`,
+            iconSize: [30, 42],
+            iconAnchor: [15, 42],
+            popupAnchor: [0, -45]
         });
     };
 
@@ -237,15 +237,22 @@
         marker.bindPopup(popupContent, {
             maxWidth: 300,
             minWidth: 280,
-            className: 'custom-leaflet-popup'
+            className: 'custom-leaflet-popup',
+            closeButton: false // Hide close button for hover interaction
         });
 
-        // Fly to location on click
+        // Interaction: Hover to open popup, Click to open Google Maps
+        marker.on('mouseover', function () {
+            this.openPopup();
+        });
+
+        marker.on('mouseout', function () {
+            this.closePopup();
+        });
+
         marker.on('click', function () {
-            map.flyTo(uni.coords, 14, {
-                duration: 1.5,
-                easeLinearity: 0.25
-            });
+            const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${uni.coords[0]},${uni.coords[1]}`;
+            window.open(googleMapsUrl, '_blank');
         });
     });
 
