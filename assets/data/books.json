@@ -1,20 +1,80 @@
 [
   {
-    "cover": "assets/images/book1.jpg",
+    "cover": "https://m.media-amazon.com/images/I/41jEbK-jG+L._SX258_BO1,204,203,200_.jpg",
     "title": "Clean Code",
-    "description": "A Handbook of Agile Software Craftsmanship by Robert C. Martin.",
-    "link": "https://www.amazon.com/dp/0132350882"
+    "description": "A Handbook of Agile Software Craftsmanship. Aprenda a escrever código limpo e sustentável.",
+    "link": "https://www.amazon.com.br/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882"
   },
   {
-    "cover": "assets/images/book2.jpg",
-    "title": "The Pragmatic Programmer",
-    "description": "Your Journey to Mastery, 20th Anniversary Edition.",
-    "link": "https://www.amazon.com/dp/0135957052"
+    "cover": "https://m.media-amazon.com/images/I/51W1sBPO7tL._SX380_BO1,204,203,200_.jpg",
+    "title": "O Programador Pragmático",
+    "description": "De aprendiz a mestre. Um guia clássico para se tornar um desenvolvedor melhor.",
+    "link": "https://www.amazon.com.br/Programador-Pragm%C3%A1tico-aprendiz-mestre/dp/8577807002"
   },
   {
-    "cover": "assets/images/book3.jpg",
-    "title": "You Don't Know JS Yet",
-    "description": "A deep dive into JavaScript fundamentals.",
-    "link": "https://github.com/getify/You-Dont-Know-JS"
+    "cover": "https://m.media-amazon.com/images/I/81HqVRRwp3L._SY522_.jpg",
+    "title": "Eloquent JavaScript",
+    "description": "Uma imersão moderna na linguagem JavaScript. Essencial para web developers.",
+    "link": "https://www.amazon.com.br/Eloquent-JavaScript-3rd-Introduction-Programming/dp/1593279507"
+  },
+  {
+    "cover": "https://m.media-amazon.com/images/I/51kUGqVzV3L._SX396_BO1,204,203,200_.jpg",
+    "title": "Refatoração",
+    "description": "Aperfeiçoando o design de códigos existentes. Um guia fundamental de Martin Fowler.",
+    "link": "https://www.amazon.com.br/Refatora%C3%A7%C3%A3o-Aperfei%C3%A7oando-Design-C%C3%B3digos-Existentes/dp/8575227246"
+  },
+  {
+    "cover": "https://m.media-amazon.com/images/I/51szD9HC9pL._SX395_BO1,204,203,200_.jpg",
+    "title": "Padrões de Projeto",
+    "description": "Soluções reutilizáveis de software orientado a objetos. O clássico da Gang of Four.",
+    "link": "https://www.amazon.com.br/Padr%C3%B5es-Projetos-Solu%C3%A7%C3%B5es-Reutiliz%C3%A1veis-Orientados/dp/8573076100"
+  },
+  {
+    "cover": "https://m.media-amazon.com/images/I/518FqJvR9aL._SX396_BO1,204,203,200_.jpg",
+    "title": "Código Limpo",
+    "description": "Habilidades práticas do Agile Software. A versão traduzida do clássico Clean Code.",
+    "link": "https://www.amazon.com.br/C%C3%B3digo-limpo-Habilidades-pr%C3%A1ticas-Software/dp/8576082675"
+  },
+  {
+    "cover": "https://m.media-amazon.com/images/I/51w6-P-yV4L._SX331_BO1,204,203,200_.jpg",
+    "title": "O Mítico Homem-Mês",
+    "description": "Ensaios sobre Engenharia de Software. Uma leitura obrigatória sobre gestão de projetos.",
+    "link": "https://www.amazon.com.br/M%C3%ADtico-Homem-M%C3%AAs-Ensaios-Engenharia-Software/dp/8576083485"
+  },
+  {
+    "cover": "https://m.media-amazon.com/images/I/51+N-R9-6AL._SX404_BO1,204,203,200_.jpg",
+    "title": "Use a Cabeça! Padrões de Projetos",
+    "description": "Uma abordagem cerebralmente amigável para aprender padrões de design.",
+    "link": "https://www.amazon.com.br/Use-Cabe%C3%A7a-Padr%C3%B5es-Projetos-Freeman/dp/8576081741"
+  },
+  {
+    "cover": "https://m.media-amazon.com/images/I/51j5p18mJNL._SX331_BO1,204,203,200_.jpg",
+    "title": "Entendendo Algoritmos",
+    "description": "Um guia ilustrado para programadores e outros curiosos. Simples e visual.",
+    "link": "https://www.amazon.com.br/Entendendo-Algoritmos-Ilustrado-Programadores-Curiosos/dp/8575225634"
+  },
+  {
+    "cover": "https://m.media-amazon.com/images/I/410vJSSHKVL._SX342_BO1,204,203,200_.jpg",
+    "title": "Cracking the Coding Interview",
+    "description": "189 perguntas e soluções de programação. O guia definitivo para entrevistas.",
+    "link": "https://www.amazon.com.br/Cracking-Coding-Interview-Programming-Questions/dp/0984782850"
+  },
+  {
+    "cover": "https://m.media-amazon.com/images/I/51sZ40l6y+L._SX335_BO1,204,203,200_.jpg",
+    "title": "Domain-Driven Design",
+    "description": "Atacando as complexidades no coração do software. O guia de Eric Evans.",
+    "link": "https://www.amazon.com.br/Domain-Driven-Design-Atacando-Complexidades-Software/dp/8550800651"
+  },
+  {
+    "cover": "https://m.media-amazon.com/images/I/51K+f+r3JOL._SX376_BO1,204,203,200_.jpg",
+    "title": "Trabalho Eficaz com Código Legado",
+    "description": "Estratégias para lidar com bases de código herdadas e difíceis de manter.",
+    "link": "https://www.amazon.com.br/Trabalho-Eficaz-C%C3%B3digo-Legado-Michael/dp/8576087995"
+  },
+  {
+    "cover": "https://m.media-amazon.com/images/I/41T71+02u2L._SX376_BO1,204,203,200_.jpg",
+    "title": "Arquitetura Limpa",
+    "description": "O guia do artesão para estrutura e design de software. Mais uma obra de Uncle Bob.",
+    "link": "https://www.amazon.com.br/Arquitetura-Limpa-Artes%C3%A3o-Estrutura-Software/dp/8550804606"
   }
 ]
