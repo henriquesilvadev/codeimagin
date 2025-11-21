@@ -154,7 +154,7 @@ class CodeImaginApp {
         helloWorldMarkup = `
           <section class="code-example">
             <h3>Exemplo clássico em ${tech.label}</h3>
-            <pre class="code-block"><code>${snippetHtml}</code></pre>
+            <pre class="code-block" data-language="${tech.label}"><code>${snippetHtml}</code></pre>
           </section>
         `;
       }

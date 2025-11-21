@@ -1193,3 +1193,61 @@ main {
   opacity: 1;
   top: -35px;
 }
+
+/* ===== CODE FEEDBACK ===== */
+
+.code-feedback {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1rem;
+  padding: 0.8rem 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  margin-top: -1px; /* Overlap border */
+}
+
+.feedback-btn {
+  background: transparent;
+  border: none;
+  color: #777;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  transition: all 0.2s ease;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.feedback-btn:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: #ccc;
+}
+
+.feedback-btn.active {
+  color: #D9731A; /* Highlight color */
+  background: rgba(217, 115, 26, 0.1);
+}
+
+.feedback-btn svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.feedback-btn:active svg {
+  transform: scale(0.8);
+}
+
+.feedback-btn.active svg {
+  transform: scale(1.1);
+}
+
+.feedback-count {
+  font-size: 0.75rem;
+  font-weight: 600;
+  opacity: 0.8;
+}
