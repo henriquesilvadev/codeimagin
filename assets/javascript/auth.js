@@ -35,7 +35,16 @@
 
     // Save auth data to localStorage
     function saveAuthData(data) {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+        try {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+        } catch (error) {
+            if (error.name === 'QuotaExceededError') {
+                // Storage quota exceeded - try to clean up old users or show error
+                showNotification('⚠️ Armazenamento local cheio! Tente usar uma foto menor ou limpe dados antigos.', 'error');
+                throw new Error('LocalStorage quota exceeded');
+            }
+            throw error;
+        }
     }
 
     // Simple password hash (for demo purposes only)
@@ -176,19 +185,52 @@
         closeModal('signinModal');
     }
 
-    // Handle photo upload
+    // Compress image to reduce localStorage usage
+    function compressImage(file, maxWidth = 200, quality = 0.7) {
+        return new Promise((resolve) => {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                const img = new Image();
+                img.onload = () => {
+                    const canvas = document.createElement('canvas');
+                    let width = img.width;
+                    let height = img.height;
+
+                    // Calculate new dimensions maintaining aspect ratio
+                    if (width > maxWidth) {
+                        height = (height * maxWidth) / width;
+                        width = maxWidth;
+                    }
+
+                    canvas.width = width;
+                    canvas.height = height;
+
+                    const ctx = canvas.getContext('2d');
+                    ctx.drawImage(img, 0, 0, width, height);
+
+                    // Convert to compressed base64
+                    const compressedData = canvas.toDataURL('image/jpeg', quality);
+                    resolve(compressedData);
+                };
+                img.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        });
+    }
+
+    // Handle photo upload with compression
     function handlePhotoUpload(input, previewContainer) {
         const file = input.files[0];
         if (!file) return null;
 
-        return new Promise((resolve) => {
-            const reader = new FileReader();
-            reader.onload = (e) => {
-                const photoData = e.target.result;
-                previewContainer.innerHTML = `<img src="${photoData}" alt="Preview">`;
-                resolve(photoData);
-            };
-            reader.readAsDataURL(file);
+        // Check file size (warn if > 1MB)
+        if (file.size > 1024 * 1024) {
+            showNotification('📸 Foto grande detectada. Comprimindo para economizar espaço...', 'info');
+        }
+
+        return compressImage(file).then((photoData) => {
+            previewContainer.innerHTML = `<img src="${photoData}" alt="Preview">`;
+            return photoData;
         });
     }
 
