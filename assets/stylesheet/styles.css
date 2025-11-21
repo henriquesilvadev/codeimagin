@@ -1023,6 +1023,469 @@ main {
 }
 
 
+/* ===== CODE EDITOR MODAL ===== */
+
+/* Floating Action Button */
+.code-editor-fab {
+  position: fixed;
+  left: 1.5rem;
+  bottom: 1.5rem;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: none;
+  background: linear-gradient(135deg, #BF247A, #D9731A);
+  color: #FFFFFF;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(191, 36, 122, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9998;
+  transition: all 0.3s ease;
+}
+
+.code-editor-fab svg {
+  width: 28px;
+  height: 28px;
+}
+
+.code-editor-fab:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 12px 32px rgba(217, 115, 26, 0.5);
+}
+
+.code-editor-fab:active {
+  transform: translateY(-2px) scale(1.02);
+}
+
+/* Modal */
+.code-editor-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.code-editor-modal.hidden {
+  display: none;
+}
+
+.code-editor-modal.active {
+  opacity: 1;
+}
+
+.code-editor-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+}
+
+.code-editor-container {
+  position: relative;
+  width: 95%;
+  max-width: 1400px;
+  height: 85vh;
+  max-height: 900px;
+  background: #1e1e1e;
+  border-radius: 16px;
+  border: 1px solid #812B8C;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.8);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transform: scale(0.9);
+  transition: transform 0.3s ease;
+}
+
+.code-editor-modal.active .code-editor-container {
+  transform: scale(1);
+}
+
+/* Header */
+.code-editor-header {
+  background: linear-gradient(135deg, #BF247A, #D9731A);
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.code-editor-title {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: #FFFFFF;
+}
+
+.code-editor-title .code-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.code-editor-title h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  background: none;
+  -webkit-text-fill-color: #FFFFFF;
+}
+
+.code-editor-close {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: #FFFFFF;
+}
+
+.code-editor-close svg {
+  width: 20px;
+  height: 20px;
+}
+
+.code-editor-close:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: rotate(90deg);
+}
+
+/* Split Panes */
+.code-editor-panes {
+  flex: 1;
+  display: flex;
+  gap: 1px;
+  background: #2a2a2a;
+  overflow: hidden;
+}
+
+.code-editor-pane {
+  flex: 1;
+  background: #1e1e1e;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.editor-pane {
+  flex: 1.5;
+}
+
+.output-pane {
+  flex: 1;
+}
+
+.pane-header {
+  background: #2a2a2a;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #3a3a3a;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pane-title {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #D9731A;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.pane-hint {
+  font-size: 0.75rem;
+  color: #888;
+  font-style: italic;
+}
+
+.clear-console-btn {
+  background: transparent;
+  border: none;
+  color: #888;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.clear-console-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+.clear-console-btn:hover {
+  background: rgba(217, 115, 26, 0.1);
+  color: #D9731A;
+}
+
+/* Code Editor */
+.code-editor-wrapper {
+  flex: 1;
+  display: flex;
+  overflow: auto;
+  position: relative;
+  background: #1e1e1e;
+}
+
+.line-numbers {
+  padding: 1rem 0.5rem 1rem 1rem;
+  background: #252525;
+  color: #858585;
+  font-family: 'Fira Code', 'JetBrains Mono', 'Consolas', monospace;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  text-align: right;
+  user-select: none;
+  white-space: pre;
+  overflow: hidden;
+  border-right: 1px solid #3a3a3a;
+  min-width: 50px;
+}
+
+.code-editor-textarea {
+  flex: 1;
+  padding: 1rem;
+  background: #1e1e1e;
+  color: #d4d4d4;
+  border: none;
+  outline: none;
+  font-family: 'Fira Code', 'JetBrains Mono', 'Consolas', monospace;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  resize: none;
+  white-space: pre;
+  overflow-wrap: normal;
+  overflow-x: auto;
+  tab-size: 2;
+}
+
+.code-editor-textarea::placeholder {
+  color: #555;
+}
+
+/* Output Console */
+.code-editor-output {
+  flex: 1;
+  padding: 1rem;
+  overflow-y: auto;
+  font-family: 'Fira Code', 'JetBrains Mono', 'Consolas', monospace;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  background: #1a1a1a;
+}
+
+.output-welcome {
+  color: #888;
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+.output-welcome p {
+  margin: 0.5rem 0;
+}
+
+.output-line {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.4rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  align-items: flex-start;
+}
+
+.output-time {
+  color: #666;
+  font-size: 0.75rem;
+  flex-shrink: 0;
+}
+
+.output-icon {
+  flex-shrink: 0;
+  width: 16px;
+  text-align: center;
+}
+
+.output-message {
+  flex: 1;
+  word-break: break-word;
+  white-space: pre-wrap;
+}
+
+.output-log {
+  color: #d4d4d4;
+}
+
+.output-log .output-icon {
+  color: #4EC9B0;
+}
+
+.output-error {
+  color: #f48771;
+}
+
+.output-error .output-icon {
+  color: #f14c4c;
+}
+
+.output-warn {
+  color: #dcdcaa;
+}
+
+.output-warn .output-icon {
+  color: #cca700;
+}
+
+.output-success {
+  color: #4EC9B0;
+}
+
+.output-success .output-icon {
+  color: #4EC9B0;
+}
+
+.output-error-stack {
+  color: #888;
+  font-size: 0.8rem;
+  padding-left: 1.5rem;
+}
+
+/* Footer */
+.code-editor-footer {
+  background: #2a2a2a;
+  padding: 1rem 1.5rem;
+  border-top: 1px solid #3a3a3a;
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+}
+
+.code-editor-btn {
+  padding: 0.65rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.code-editor-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+.run-btn {
+  background: linear-gradient(135deg, #BF247A, #D9731A);
+  color: #FFFFFF;
+  box-shadow: 0 4px 12px rgba(191, 36, 122, 0.3);
+}
+
+.run-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(217, 115, 26, 0.4);
+}
+
+.run-btn:active {
+  transform: translateY(0);
+}
+
+.clear-btn {
+  background: rgba(255, 255, 255, 0.05);
+  color: #EAEAEA;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.clear-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .code-editor-fab {
+    left: 1rem;
+    bottom: 1rem;
+    width: 56px;
+    height: 56px;
+  }
+
+  .code-editor-fab svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .code-editor-container {
+    width: 100%;
+    height: 100vh;
+    max-height: 100vh;
+    border-radius: 0;
+  }
+
+  .code-editor-panes {
+    flex-direction: column;
+  }
+
+  .editor-pane,
+  .output-pane {
+    flex: 1;
+  }
+
+  .pane-hint {
+    display: none;
+  }
+
+  .code-editor-footer {
+    flex-wrap: wrap;
+  }
+
+  .code-editor-btn {
+    flex: 1;
+    min-width: 140px;
+    justify-content: center;
+  }
+}
+
+/* Scrollbar Styling */
+.code-editor-textarea::-webkit-scrollbar,
+.code-editor-output::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+.code-editor-textarea::-webkit-scrollbar-track,
+.code-editor-output::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+.code-editor-textarea::-webkit-scrollbar-thumb,
+.code-editor-output::-webkit-scrollbar-thumb {
+  background: #3a3a3a;
+  border-radius: 6px;
+}
+
+.code-editor-textarea::-webkit-scrollbar-thumb:hover,
+.code-editor-output::-webkit-scrollbar-thumb:hover {
+  background: #4a4a4a;
+}
+
+
 /* ---- NOVAS CLASSES ADICIONADAS ---- */
 
 /* deixa o hero em layout de duas colunas */
