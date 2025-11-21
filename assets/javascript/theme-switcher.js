@@ -4,15 +4,13 @@
 (function () {
     'use strict';
 
-    // Available themes
+    // Available themes (Dark themes only)
     const themes = [
         { id: 'monokai', name: 'Monokai', icon: '🎨' },
         { id: 'dracula', name: 'Dracula', icon: '🧛' },
         { id: 'nord', name: 'Nord', icon: '❄️' },
         { id: 'onedark', name: 'One Dark', icon: '⚛️' },
         { id: 'solarized-dark', name: 'Solarized Dark', icon: '🌙' },
-        { id: 'solarized-light', name: 'Solarized Light', icon: '☀️' },
-        { id: 'github-light', name: 'GitHub Light', icon: '🐙' },
         { id: 'gruvbox', name: 'Gruvbox', icon: '🍂' },
         { id: 'material', name: 'Material', icon: '💎' },
         { id: 'tokyo-night', name: 'Tokyo Night', icon: '🌃' }
