@@ -192,6 +192,46 @@
         });
     }
 
+    // Handle Google Sign-In (Mock implementation for demo)
+    function handleGoogleSignIn() {
+        showNotification('⚠️ Google Sign-In é uma funcionalidade demo. Para implementar completamente, você precisaria de um Google OAuth Client ID.', 'info');
+
+        // Mock Google user data for demo purposes
+        const mockGoogleUser = {
+            email: `demo.google.${Date.now()}@gmail.com`,
+            name: 'Usuário Google Demo',
+            photo: `emoji:${window.EmojiAvatar.getRandomEmoji()}`
+        };
+
+        // Create account with mock data
+        const authData = getAuthData();
+
+        // Check if already exists
+        if (authData.users[mockGoogleUser.email]) {
+            // Sign in
+            authData.currentUser = mockGoogleUser.email;
+            saveAuthData(authData);
+            showUserProfile(authData.users[mockGoogleUser.email]);
+            closeAllModals();
+            showNotification('Login com Google realizado!', 'success');
+        } else {
+            // Sign up
+            authData.users[mockGoogleUser.email] = {
+                email: mockGoogleUser.email,
+                name: mockGoogleUser.name,
+                photo: mockGoogleUser.photo,
+                password: '', // No password for Google users
+                createdAt: new Date().toISOString(),
+                provider: 'google'
+            };
+            authData.currentUser = mockGoogleUser.email;
+            saveAuthData(authData);
+            showUserProfile(authData.users[mockGoogleUser.email]);
+            closeAllModals();
+            showNotification('Conta Google criada com sucesso!', 'success');
+        }
+    }
+
     // Setup event listeners
     function setupEventListeners() {
         // Signup form
@@ -251,6 +291,17 @@
                 const previewContainer = document.querySelector('#signupModal .photo-preview');
                 handlePhotoUpload(photoUpload, previewContainer);
             });
+        }
+
+        // Google Sign-In buttons
+        const googleSignupBtn = document.getElementById('googleSignupBtn');
+        if (googleSignupBtn) {
+            googleSignupBtn.addEventListener('click', handleGoogleSignIn);
+        }
+
+        const googleSigninBtn = document.getElementById('googleSigninBtn');
+        if (googleSigninBtn) {
+            googleSigninBtn.addEventListener('click', handleGoogleSignIn);
         }
 
         // Close modal buttons
