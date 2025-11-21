@@ -203,7 +203,8 @@
     ];
 
     // Custom Icon Function (Pin Style)
-    const createCustomIcon = (color) => {
+    const createCustomIcon = () => {
+        const color = "#812B8C"; // Purple Brand Color
         return L.divIcon({
             className: 'custom-pin-container', // Wrapper to avoid Leaflet transform issues
             html: `<div class="custom-map-pin" style="background-color: ${color}; color: ${color};"></div>`,
@@ -216,40 +217,10 @@
     // Add Markers
     universities.forEach(uni => {
         const marker = L.marker(uni.coords, {
-            icon: createCustomIcon(uni.color)
+            icon: createCustomIcon()
         }).addTo(map);
 
-        // Custom Popup Content (Card Style)
-        const popupContent = `
-      <div class="map-popup-card">
-        <div class="map-popup-image-container">
-          <img src="${uni.image}" alt="${uni.fullName}" class="map-popup-image" loading="lazy" />
-          <div class="map-popup-overlay"></div>
-          <h3 class="map-popup-title" style="border-left-color: ${uni.color}">${uni.name}</h3>
-        </div>
-        <div class="map-popup-info">
-          <h4>${uni.fullName}</h4>
-          <p>${uni.desc}</p>
-        </div>
-      </div>
-    `;
-
-        marker.bindPopup(popupContent, {
-            maxWidth: 300,
-            minWidth: 280,
-            className: 'custom-leaflet-popup',
-            closeButton: false // Hide close button for hover interaction
-        });
-
-        // Interaction: Hover to open popup, Click to open Google Maps
-        marker.on('mouseover', function () {
-            this.openPopup();
-        });
-
-        marker.on('mouseout', function () {
-            this.closePopup();
-        });
-
+        // Interaction: Click to open Google Maps
         marker.on('click', function () {
             const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${uni.coords[0]},${uni.coords[1]}`;
             window.open(googleMapsUrl, '_blank');
