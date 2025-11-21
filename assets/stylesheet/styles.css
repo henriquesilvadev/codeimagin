@@ -1565,3 +1565,35 @@ main {
     bottom: 90px;
   }
 }
+
+/* Video Transition Styles */
+.hero-video-wrapper {
+  position: relative;
+  /* Ensure wrapper can contain absolute positioned elements if needed */
+}
+
+.hero-video {
+  transition: opacity 0.8s ease;
+}
+
+.hero-video.fade-out {
+  opacity: 0;
+}
+
+#youtube-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  background: #000;
+}
+
+#youtube-wrapper.fade-in {
+  opacity: 1;
+}
