@@ -311,7 +311,7 @@ main {
 .footer-content {
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 2.4rem;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
@@ -689,6 +689,15 @@ main {
   box-shadow: 0 16px 36px rgba(0, 0, 0, 0.65);
 }
 
+/* Media query adjustments for hero-video-wrapper */
+@media (min-width: 768px) {
+  .hero-video-wrapper {
+    flex: 1;
+    max-width: 560px;
+    padding: 0;
+  }
+}
+
 /* iFrame em full dentro do wrapper */
 .hero-video-wrapper iframe {
   position: absolute;
@@ -804,16 +813,6 @@ main {
 }
 
 
-
-/* Wrapper do vídeo */
-.hero-video-wrapper {
-  flex: 1;
-  /* Ocupa metade ou menos */
-  max-width: 560px;
-  border-radius: 12px;
-  /* opcional: fica mais elegante */
-  padding: 0;
-}
 
 /* Vídeo dentro do wrapper */
 .hero-video {
