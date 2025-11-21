@@ -1635,7 +1635,7 @@ main {
 }
 
 .map-popup-info h4 {
-  margin: 0 0 6px 0;
+  margin: 0 0 6px;
   font-size: 0.95rem;
   color: #bf247a;
   /* Brand Pink */
@@ -2103,7 +2103,7 @@ main {
 }
 
 .link-content h5 {
-  margin: 0 0 0.25rem 0;
+  margin: 0 0 0.25rem;
   font-size: 1rem;
   font-weight: 700;
   background: linear-gradient(to right, #BF247A, #D9731A);
