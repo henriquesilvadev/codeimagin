@@ -1025,40 +1025,6 @@ main {
 
 /* ===== CODE EDITOR MODAL ===== */
 
-/* Floating Action Button */
-.code-editor-fab {
-  position: fixed;
-  left: 1.5rem;
-  bottom: 1.5rem;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  border: none;
-  background: linear-gradient(135deg, #BF247A, #D9731A);
-  color: #FFFFFF;
-  cursor: pointer;
-  box-shadow: 0 8px 24px rgba(191, 36, 122, 0.4);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 9998;
-  transition: all 0.3s ease;
-}
-
-.code-editor-fab svg {
-  width: 28px;
-  height: 28px;
-}
-
-.code-editor-fab:hover {
-  transform: translateY(-4px) scale(1.05);
-  box-shadow: 0 12px 32px rgba(217, 115, 26, 0.5);
-}
-
-.code-editor-fab:active {
-  transform: translateY(-2px) scale(1.02);
-}
-
 /* Modal */
 .code-editor-modal {
   position: fixed;
@@ -1486,51 +1452,104 @@ main {
 }
 
 
-/* ===== CODE DOJO SIDEBAR ===== */
+/* ===== FLOATING ACTIONS GROUP (iPhone Style) ===== */
 
-/* Toggle Button */
-.codedojo-toggle {
+.floating-actions {
   position: fixed;
-  right: 1.5rem;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 60px;
-  height: 60px;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 12px;
+  padding: 12px 16px;
+  background: rgba(30, 30, 30, 0.95);
+  backdrop-filter: blur(20px);
+  border-radius: 24px;
+  border: 1px solid rgba(129, 43, 140, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  z-index: 9998;
+  transition: all 0.3s ease;
+}
+
+.floating-actions:hover {
+  box-shadow: 0 12px 40px rgba(191, 36, 122, 0.4);
+  border-color: rgba(191, 36, 122, 0.5);
+}
+
+.floating-btn {
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   border: none;
   background: linear-gradient(135deg, #BF247A, #D9731A);
   color: #FFFFFF;
   cursor: pointer;
-  box-shadow: 0 8px 24px rgba(191, 36, 122, 0.4);
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 4px;
-  z-index: 9997;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
+  position: relative;
 }
 
-.codedojo-toggle svg {
-  width: 24px;
-  height: 24px;
+.floating-btn svg {
+  width: 22px;
+  height: 22px;
 }
 
-.codedojo-toggle .toggle-text {
-  font-size: 0.65rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+.floating-btn:hover {
+  transform: translateY(-4px) scale(1.1);
+  box-shadow: 0 8px 20px rgba(217, 115, 26, 0.5);
 }
 
-.codedojo-toggle:hover {
-  transform: translateY(-50%) scale(1.05);
-  box-shadow: 0 12px 32px rgba(217, 115, 26, 0.5);
+.floating-btn:active {
+  transform: translateY(-2px) scale(1.05);
 }
 
-.codedojo-toggle:active {
-  transform: translateY(-50%) scale(1.02);
+/* Tooltip on hover */
+.floating-btn::after {
+  content: attr(title);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-8px);
+  padding: 6px 12px;
+  background: rgba(0, 0, 0, 0.9);
+  color: #fff;
+  font-size: 0.75rem;
+  border-radius: 6px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
+
+.floating-btn:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-12px);
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .floating-actions {
+    bottom: 16px;
+    gap: 10px;
+    padding: 10px 14px;
+  }
+
+  .floating-btn {
+    width: 44px;
+    height: 44px;
+  }
+
+  .floating-btn svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+
+
+/* ===== CODE DOJO SIDEBAR ===== */
 
 /* Sidebar */
 .codedojo-sidebar {
