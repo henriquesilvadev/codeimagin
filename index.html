@@ -197,6 +197,173 @@
     </div>
   </footer>
 
+  <!-- Code Dojo Sidebar Toggle Button -->
+  <button class="codedojo-toggle" id="codeDojoToggle" aria-label="Abrir Code Dojo">
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round" />
+      <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round" />
+      <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round" />
+    </svg>
+    <span class="toggle-text">Dojo</span>
+  </button>
+
+  <!-- Code Dojo Sidebar -->
+  <aside class="codedojo-sidebar" id="codeDojoSidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-title">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="dojo-icon">
+          <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+          <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+          <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+        <h3>Code Dojo</h3>
+      </div>
+      <button class="sidebar-close" id="sidebarClose" aria-label="Fechar Sidebar">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+        </svg>
+      </button>
+    </div>
+
+    <div class="sidebar-content">
+      <!-- What is Code Dojo -->
+      <section class="dojo-section">
+        <h4 class="section-title">O que é Code Dojo?</h4>
+        <p class="section-description">
+          Code Dojo é uma prática colaborativa onde desenvolvedores se reúnem para resolver
+          desafios de programação (katas) em conjunto, focando em aprendizado e melhoria contínua.
+        </p>
+        <p class="section-description">
+          É um ambiente seguro para experimentar, errar e aprender com outros desenvolvedores,
+          praticando TDD, pair programming e outras técnicas ágeis.
+        </p>
+      </section>
+
+      <!-- Link to CodeImag.in -->
+      <section class="dojo-section">
+        <a href="https://codeimag.in" target="_blank" rel="noopener noreferrer" class="dojo-link-card">
+          <div class="link-icon">🚀</div>
+          <div class="link-content">
+            <h5>Visite CodeImag.in</h5>
+            <p>Explore mais recursos e ferramentas para desenvolvedores</p>
+          </div>
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="link-arrow">
+            <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+        </a>
+      </section>
+
+      <!-- Katas List -->
+      <section class="dojo-section">
+        <h4 class="section-title">Katas Populares</h4>
+        <p class="section-subtitle">Pratique com estes desafios clássicos:</p>
+
+        <ul class="kata-list">
+          <li class="kata-item">
+            <a href="https://codingdojo.org/kata/christmas-delivery" target="_blank" rel="noopener noreferrer"
+              class="kata-link">
+              <span class="kata-icon">🎄</span>
+              <div class="kata-info">
+                <span class="kata-name">Christmas Delivery</span>
+                <span class="kata-desc">Otimize entregas de Natal</span>
+              </div>
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="external-icon">
+                <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3" stroke="currentColor"
+                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
+          </li>
+
+          <li class="kata-item">
+            <a href="https://codingdojo.org/kata/FizzBuzz" target="_blank" rel="noopener noreferrer" class="kata-link">
+              <span class="kata-icon">🔢</span>
+              <div class="kata-info">
+                <span class="kata-name">FizzBuzz</span>
+                <span class="kata-desc">Clássico de entrevistas</span>
+              </div>
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="external-icon">
+                <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3" stroke="currentColor"
+                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
+          </li>
+
+          <li class="kata-item">
+            <a href="https://codingdojo.org/kata/RomanNumerals" target="_blank" rel="noopener noreferrer"
+              class="kata-link">
+              <span class="kata-icon">🏛️</span>
+              <div class="kata-info">
+                <span class="kata-name">Roman Numerals</span>
+                <span class="kata-desc">Conversão de números romanos</span>
+              </div>
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="external-icon">
+                <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3" stroke="currentColor"
+                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
+          </li>
+
+          <li class="kata-item">
+            <a href="https://codingdojo.org/kata/BowlingGame" target="_blank" rel="noopener noreferrer"
+              class="kata-link">
+              <span class="kata-icon">🎳</span>
+              <div class="kata-info">
+                <span class="kata-name">Bowling Game</span>
+                <span class="kata-desc">Calcule pontuação de boliche</span>
+              </div>
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="external-icon">
+                <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3" stroke="currentColor"
+                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
+          </li>
+
+          <li class="kata-item">
+            <a href="https://codingdojo.org/kata/StringCalculator" target="_blank" rel="noopener noreferrer"
+              class="kata-link">
+              <span class="kata-icon">🧮</span>
+              <div class="kata-info">
+                <span class="kata-name">String Calculator</span>
+                <span class="kata-desc">Calculadora de strings</span>
+              </div>
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="external-icon">
+                <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3" stroke="currentColor"
+                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
+          </li>
+
+          <li class="kata-item">
+            <a href="https://codingdojo.org/kata/PrimeFactors" target="_blank" rel="noopener noreferrer"
+              class="kata-link">
+              <span class="kata-icon">🔢</span>
+              <div class="kata-info">
+                <span class="kata-name">Prime Factors</span>
+                <span class="kata-desc">Fatoração de números primos</span>
+              </div>
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="external-icon">
+                <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3" stroke="currentColor"
+                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Footer Note -->
+      <div class="sidebar-footer">
+        <p>💡 Pratique regularmente para melhorar suas habilidades!</p>
+      </div>
+    </div>
+  </aside>
+
   <!-- Code Editor Floating Button -->
   <button class="code-editor-fab" id="codeEditorFab" aria-label="Abrir Editor de Código">
     <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -290,6 +457,31 @@
   <script src="assets/javascript/effects.js"></script>
   <script src="assets/javascript/video-transition.js"></script>
   <script src="assets/javascript/code-editor.js"></script>
+  <script>
+    // Code Dojo Sidebar Toggle
+    (function () {
+      const toggle = document.getElementById('codeDojoToggle');
+      const sidebar = document.getElementById('codeDojoSidebar');
+      const closeBtn = document.getElementById('sidebarClose');
+
+      if (toggle && sidebar && closeBtn) {
+        toggle.addEventListener('click', () => {
+          sidebar.classList.add('active');
+        });
+
+        closeBtn.addEventListener('click', () => {
+          sidebar.classList.remove('active');
+        });
+
+        // Close on Escape key
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && sidebar.classList.contains('active')) {
+            sidebar.classList.remove('active');
+          }
+        });
+      }
+    })();
+  </script>
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
