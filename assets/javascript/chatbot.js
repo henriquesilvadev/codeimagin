@@ -1,7 +1,7 @@
 class Chatbot {
     constructor() {
         this.apiKey = window.CONFIG?.GEMINI_API_KEY;
-        this.apiUrl = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent';
+        this.apiUrl = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent';
         this.isOpen = false;
         this.messages = [];
 
