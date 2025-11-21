@@ -197,18 +197,36 @@
     </div>
   </footer>
 
-  <!-- Code Dojo Sidebar Toggle Button -->
-  <button class="codedojo-toggle" id="codeDojoToggle" aria-label="Abrir Code Dojo">
-    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-        stroke-linejoin="round" />
-      <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-        stroke-linejoin="round" />
-      <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-        stroke-linejoin="round" />
-    </svg>
-    <span class="toggle-text">Dojo</span>
-  </button>
+  <!-- Floating Actions Group (iPhone Style) -->
+  <div class="floating-actions">
+    <button class="floating-btn" id="chatbotBtn" aria-label="Abrir Chatbot" title="Chatbot">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </button>
+
+    <button class="floating-btn" id="codeEditorFab" aria-label="Abrir Editor de Código" title="Code Editor">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8 6L4 10L8 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round" />
+        <path d="M16 6L20 10L16 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round" />
+        <path d="M12 4L10 20" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+      </svg>
+    </button>
+
+    <button class="floating-btn" id="codeDojoToggle" aria-label="Abrir Code Dojo" title="Code Dojo">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round" />
+        <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round" />
+        <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round" />
+      </svg>
+    </button>
+  </div>
 
   <!-- Code Dojo Sidebar -->
   <aside class="codedojo-sidebar" id="codeDojoSidebar">
@@ -245,13 +263,12 @@
         </p>
       </section>
 
-      <!-- Link to CodeImag.in -->
-      <section class="dojo-section">
-        <a href="https://codeimag.in" target="_blank" rel="noopener noreferrer" class="dojo-link-card">
-          <div class="link-icon">🚀</div>
+      <!-- Link to Coding Dojo -->\n <section class="dojo-section">
+        <a href="https://codingdojo.org" target="_blank" rel="noopener noreferrer" class="dojo-link-card">
+          <div class="link-icon">🥋</div>
           <div class="link-content">
-            <h5>Visite CodeImag.in</h5>
-            <p>Explore mais recursos e ferramentas para desenvolvedores</p>
+            <h5>Visite CodingDojo.org</h5>
+            <p>Explore mais katas e recursos para praticar</p>
           </div>
           <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="link-arrow">
             <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -311,12 +328,12 @@
           </li>
 
           <li class="kata-item">
-            <a href="https://codingdojo.org/kata/BowlingGame" target="_blank" rel="noopener noreferrer"
+            <a href="https://codingdojo.org/kata/GildedRose" target="_blank" rel="noopener noreferrer"
               class="kata-link">
-              <span class="kata-icon">🎳</span>
+              <span class="kata-icon">🌹</span>
               <div class="kata-info">
-                <span class="kata-name">Bowling Game</span>
-                <span class="kata-desc">Calcule pontuação de boliche</span>
+                <span class="kata-name">Gilded Rose</span>
+                <span class="kata-desc">Refatoração de código legado</span>
               </div>
               <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="external-icon">
                 <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3" stroke="currentColor"
@@ -341,12 +358,11 @@
           </li>
 
           <li class="kata-item">
-            <a href="https://codingdojo.org/kata/PrimeFactors" target="_blank" rel="noopener noreferrer"
-              class="kata-link">
-              <span class="kata-icon">🔢</span>
+            <a href="https://codingdojo.org/kata/Tennis" target="_blank" rel="noopener noreferrer" class="kata-link">
+              <span class="kata-icon">🎾</span>
               <div class="kata-info">
-                <span class="kata-name">Prime Factors</span>
-                <span class="kata-desc">Fatoração de números primos</span>
+                <span class="kata-name">Tennis Game</span>
+                <span class="kata-desc">Sistema de pontuação de tênis</span>
               </div>
               <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="external-icon">
                 <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3" stroke="currentColor"
@@ -478,6 +494,19 @@
           if (e.key === 'Escape' && sidebar.classList.contains('active')) {
             sidebar.classList.remove('active');
           }
+        });
+      }
+    })();
+
+    // Chatbot Button
+    (function () {
+      const chatbotBtn = document.getElementById('chatbotBtn');
+      const chatbotContainer = document.getElementById('chatbot-container');
+      const chatbotToggle = document.getElementById('chatbot-toggle');
+
+      if (chatbotBtn && chatbotToggle) {
+        chatbotBtn.addEventListener('click', () => {
+          chatbotToggle.click(); // Trigger existing chatbot
         });
       }
     })();
