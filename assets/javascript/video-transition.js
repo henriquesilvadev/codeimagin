@@ -49,17 +49,23 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     localVideo.addEventListener('ended', () => {
+        console.log('Intro video ended. Starting transition...');
         // Fade out local video
         localVideo.classList.add('fade-out');
 
         // Wait for fade out to finish (approx match CSS transition)
         setTimeout(() => {
-            localVideo.style.display = 'none';
+            // Do NOT set display: none, to preserve container height
+            // localVideo.style.display = 'none'; 
+
             ytWrapper.classList.remove('hidden');
             ytWrapper.classList.add('fade-in');
 
             if (player && typeof player.playVideo === 'function') {
+                console.log('Playing YouTube video...');
                 player.playVideo();
+            } else {
+                console.error('YouTube player not ready yet.');
             }
         }, 800);
     });
