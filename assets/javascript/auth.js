@@ -192,35 +192,110 @@
         });
     }
 
-    // Handle Google Sign-In (Mock implementation for demo)
+    // Handle Google Sign-In (Real implementation with Google Identity Services)
     function handleGoogleSignIn() {
-        showNotification('⚠️ Google Sign-In é uma funcionalidade demo. Para implementar completamente, você precisaria de um Google OAuth Client ID.', 'info');
+        // Check if Google Identity Services is loaded
+        if (typeof google === 'undefined' || !google.accounts) {
+            showNotification('⚠️ Google Sign-In ainda está carregando. Tente novamente em alguns segundos.', 'info');
+            return;
+        }
 
-        // Mock Google user data for demo purposes
+        // Initialize Google Sign-In
+        google.accounts.id.initialize({
+            client_id: 'YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com', // Replace with your actual Client ID
+            callback: handleGoogleCallback,
+            auto_select: false,
+            cancel_on_tap_outside: true
+        });
+
+        // Prompt the One Tap dialog
+        google.accounts.id.prompt((notification) => {
+            if (notification.isNotDisplayed() || notification.isSkippedMoment()) {
+                // Fallback to button flow if One Tap is not available
+                showNotification('💡 Para usar Google Sign-In, você precisa configurar um Google OAuth Client ID válido.', 'info');
+
+                // For demo purposes, show mock implementation
+                handleMockGoogleSignIn();
+            }
+        });
+    }
+
+    // Handle Google OAuth callback
+    function handleGoogleCallback(response) {
+        try {
+            // Decode JWT token to get user info
+            const userInfo = parseJwt(response.credential);
+
+            const googleUser = {
+                email: userInfo.email,
+                name: userInfo.name,
+                photo: userInfo.picture || `emoji:${window.EmojiAvatar.getForUser(userInfo.email)}`
+            };
+
+            // Create or sign in user
+            const authData = getAuthData();
+
+            if (authData.users[googleUser.email]) {
+                // Sign in existing user
+                authData.currentUser = googleUser.email;
+                saveAuthData(authData);
+                showUserProfile(authData.users[googleUser.email]);
+                closeAllModals();
+                showNotification('Login com Google realizado!', 'success');
+            } else {
+                // Create new user
+                authData.users[googleUser.email] = {
+                    email: googleUser.email,
+                    name: googleUser.name,
+                    photo: googleUser.photo,
+                    password: '', // No password for Google users
+                    createdAt: new Date().toISOString(),
+                    provider: 'google'
+                };
+                authData.currentUser = googleUser.email;
+                saveAuthData(authData);
+                showUserProfile(authData.users[googleUser.email]);
+                closeAllModals();
+                showNotification('Conta Google criada com sucesso!', 'success');
+            }
+        } catch (error) {
+            console.error('Google Sign-In error:', error);
+            showNotification('Erro ao fazer login com Google. Tente novamente.', 'error');
+        }
+    }
+
+    // Parse JWT token
+    function parseJwt(token) {
+        const base64Url = token.split('.')[1];
+        const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+        const jsonPayload = decodeURIComponent(atob(base64).split('').map(function (c) {
+            return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+        }).join(''));
+        return JSON.parse(jsonPayload);
+    }
+
+    // Mock Google Sign-In (fallback for demo)
+    function handleMockGoogleSignIn() {
         const mockGoogleUser = {
             email: `demo.google.${Date.now()}@gmail.com`,
             name: 'Usuário Google Demo',
             photo: `emoji:${window.EmojiAvatar.getRandomEmoji()}`
         };
 
-        // Create account with mock data
         const authData = getAuthData();
 
-        // Check if already exists
         if (authData.users[mockGoogleUser.email]) {
-            // Sign in
             authData.currentUser = mockGoogleUser.email;
             saveAuthData(authData);
             showUserProfile(authData.users[mockGoogleUser.email]);
             closeAllModals();
-            showNotification('Login com Google realizado!', 'success');
+            showNotification('Login com Google (demo) realizado!', 'success');
         } else {
-            // Sign up
             authData.users[mockGoogleUser.email] = {
                 email: mockGoogleUser.email,
                 name: mockGoogleUser.name,
                 photo: mockGoogleUser.photo,
-                password: '', // No password for Google users
+                password: '',
                 createdAt: new Date().toISOString(),
                 provider: 'google'
             };
@@ -228,7 +303,7 @@
             saveAuthData(authData);
             showUserProfile(authData.users[mockGoogleUser.email]);
             closeAllModals();
-            showNotification('Conta Google criada com sucesso!', 'success');
+            showNotification('Conta Google (demo) criada com sucesso!', 'success');
         }
     }
 
