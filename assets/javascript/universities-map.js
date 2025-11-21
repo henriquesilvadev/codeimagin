@@ -220,10 +220,46 @@
             icon: createCustomIcon()
         }).addTo(map);
 
-        // Interaction: Click to open Google Maps
+        // Custom Popup Content (Professional Card Style)
+        const popupContent = `
+      <div class="map-popup-card">
+        <div class="map-popup-image-container">
+          <img src="${uni.image}" alt="${uni.fullName}" class="map-popup-image" loading="lazy" />
+          <div class="map-popup-overlay"></div>
+          <h3 class="map-popup-title">${uni.name}</h3>
+        </div>
+        <div class="map-popup-info">
+          <h4>${uni.fullName}</h4>
+          <p>${uni.desc}</p>
+        </div>
+      </div>
+    `;
+
+        marker.bindPopup(popupContent, {
+            maxWidth: 320,
+            minWidth: 300,
+            className: 'custom-leaflet-popup',
+            closeButton: true,
+            autoPan: true
+        });
+
+        // Open popup on hover (optional, but user asked for "balõezinhos" which implies they appear)
+        // We'll stick to click for better mobile support, or hover if preferred.
+        // Let's do hover opens, click keeps open.
+        marker.on('mouseover', function () {
+            this.openPopup();
+        });
+
+        marker.on('mouseout', function () {
+            // this.closePopup(); // Keep open to allow interaction
+        });
+
+        // Click centers the map and ensures popup is open
         marker.on('click', function () {
-            const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${uni.coords[0]},${uni.coords[1]}`;
-            window.open(googleMapsUrl, '_blank');
+            map.flyTo(uni.coords, 15, {
+                duration: 1.2
+            });
+            this.openPopup();
         });
     });
 
