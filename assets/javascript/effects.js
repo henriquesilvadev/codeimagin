@@ -99,7 +99,9 @@ function enhanceCodeBlock(codeBlock) {
         btn.title = label;
 
         // Load count from localStorage
-        const storageKey = `feedback-${language}-${type}`;
+        // Normalize language for storage key: lowercase, trim, replace spaces/special chars
+        const safeLanguage = language.toLowerCase().trim().replace(/[^a-z0-9]+/g, '-');
+        const storageKey = `feedback-${safeLanguage}-${type}`;
         let count = parseInt(localStorage.getItem(storageKey) || '0', 10);
 
         btn.innerHTML = `
