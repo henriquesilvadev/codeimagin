@@ -48,6 +48,7 @@
   <link rel="stylesheet" href="assets/stylesheet/github-corner.css">
   <link rel="stylesheet" href="assets/stylesheet/chatbot.css">
   <link rel="stylesheet" href="assets/stylesheet/auth.css">
+  <link rel="stylesheet" href="assets/stylesheet/benchmark.css">
 
   <!-- Google Sign-In -->
   <script src="https://accounts.google.com/gsi/client" async></script>
@@ -179,6 +180,40 @@
       <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAd9n7kP37PaWq8m3KtFk57EkyQSXTBeuY&callback=initMap">
         </script>
+    </section>
+
+    <br /><br />
+
+    <!-- Programming Language Benchmark -->
+    <section class="benchmark-section" aria-label="Benchmark de Linguagens de Programação">
+      <div class="benchmark-header">
+        <h2 class="benchmark-title">📊 Linguagens Mais Populares</h2>
+        <p class="benchmark-subtitle">Evolução da popularidade das principais linguagens de programação ao longo dos
+          anos</p>
+      </div>
+
+      <div class="benchmark-controls">
+        <!-- Year selector will be dynamically generated here -->
+      </div>
+
+      <div class="benchmark-chart" id="benchmarkChart">
+        <!-- Chart bars will be dynamically generated here -->
+      </div>
+
+      <div class="benchmark-legend">
+        <div class="legend-item">
+          <span class="trend-indicator trend-up">↑</span>
+          <span>Crescimento</span>
+        </div>
+        <div class="legend-item">
+          <span class="trend-indicator trend-down">↓</span>
+          <span>Declínio</span>
+        </div>
+        <div class="legend-item">
+          <span class="trend-indicator trend-stable">━</span>
+          <span>Estável</span>
+        </div>
+      </div>
     </section>
 
     <!-- SEÇÃO: ESTATÍSTICAS DO PROJETO -->
@@ -743,6 +778,8 @@
   <script src="assets/javascript/effects.js"></script>
   <script src="assets/javascript/video-transition.js"></script>
   <script src="assets/javascript/code-editor.js"></script>
+  <script src="assets/data/benchmark-data.js"></script>
+  <script src="assets/javascript/benchmark-chart.js"></script>
   <script>
     // Code Dojo Sidebar Toggle
     (function () {
