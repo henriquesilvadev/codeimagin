@@ -259,8 +259,9 @@
     }
 
     function applyJediTransformation(photoBase64, prompt) {
-        // Since we can't generate images directly with Gemini Flash,
-        // we'll create a canvas transformation that makes it look more Jedi-like
+        // Create a more pronounced Jedi holographic transformation
+        console.log('🎨 Applying Jedi transformation...');
+
         return new Promise((resolve) => {
             const img = new Image();
             img.onload = () => {
@@ -273,19 +274,53 @@
                 // Draw original image
                 ctx.drawImage(img, 0, 0);
 
-                // Apply blue holographic tint
-                ctx.globalCompositeOperation = 'multiply';
-                ctx.fillStyle = 'rgba(59, 130, 246, 0.3)';
-                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                // Get image data for pixel manipulation
+                const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                const data = imageData.data;
 
-                // Add glow effect
+                // Apply strong blue holographic filter pixel by pixel
+                for (let i = 0; i < data.length; i += 4) {
+                    const r = data[i];
+                    const g = data[i + 1];
+                    const b = data[i + 2];
+
+                    // Convert to grayscale first
+                    const gray = (r + g + b) / 3;
+
+                    // Apply strong blue tint with holographic effect
+                    data[i] = gray * 0.3;          // Red - muito reduzido
+                    data[i + 1] = gray * 0.6;      // Green - médio
+                    data[i + 2] = gray * 1.5;      // Blue - muito aumentado
+
+                    // Increase brightness for holographic glow
+                    data[i] = Math.min(255, data[i] + 30);
+                    data[i + 1] = Math.min(255, data[i + 1] + 50);
+                    data[i + 2] = Math.min(255, data[i + 2] + 80);
+                }
+
+                // Put modified image data back
+                ctx.putImageData(imageData, 0, 0);
+
+                // Add additional glow layers
                 ctx.globalCompositeOperation = 'screen';
-                ctx.fillStyle = 'rgba(96, 165, 250, 0.2)';
+                ctx.fillStyle = 'rgba(59, 130, 246, 0.4)';
                 ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-                // Convert to base64
-                resolve(canvas.toDataURL('image/png'));
+                // Add bright highlights
+                ctx.globalCompositeOperation = 'overlay';
+                ctx.fillStyle = 'rgba(96, 165, 250, 0.3)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                const result = canvas.toDataURL('image/png');
+                console.log('✅ Jedi transformation complete!');
+                resolve(result);
             };
+
+            img.onerror = (error) => {
+                console.error('❌ Error loading image for transformation:', error);
+                resolve(photoBase64); // Fallback to original
+            };
+
             img.src = photoBase64;
         });
     }
