@@ -93,6 +93,14 @@ function initMap() {
 
     // Add Markers
     addMarkers();
+
+    // Search Listener
+    const searchInput = document.getElementById('mapSearchInput');
+    if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+            filterMarkers(e.target.value);
+        });
+    }
 }
 
 function addMarkers() {
@@ -107,7 +115,6 @@ function addMarkers() {
             map: map,
             title: creator.name,
             animation: google.maps.Animation.DROP,
-            // Custom icon could go here if needed
         });
 
         // Add click listener
@@ -115,7 +122,33 @@ function addMarkers() {
             openCreatorModal(creator);
         });
 
+        // Store metadata for filtering
+        marker.metadata = {
+            name: creator.name.toLowerCase(),
+            language: creator.language.toLowerCase(),
+            country: creator.country ? creator.country.toLowerCase() : ''
+        };
+
         markers.push(marker);
+    });
+}
+
+function filterMarkers(query) {
+    const lowerQuery = query.toLowerCase();
+
+    markers.forEach(marker => {
+        const { name, language, country } = marker.metadata;
+        const isMatch = name.includes(lowerQuery) ||
+            language.includes(lowerQuery) ||
+            country.includes(lowerQuery);
+
+        if (isMatch) {
+            if (marker.getMap() === null) {
+                marker.setMap(map);
+            }
+        } else {
+            marker.setMap(null);
+        }
     });
 }
 
