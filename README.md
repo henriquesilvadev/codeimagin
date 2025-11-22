@@ -89,7 +89,7 @@ Para rodar o projeto localmente, você pode usar qualquer servidor estático sim
 
 Este projeto foi desenvolvido por **Henrique Silva** como parte da **Imersão Dev com Google Gemini** da **Alura**.
 
-- **Instrutores**: Gui Lima, Rafaella Ballerini e Luciano Martins.
+- **Instrutores**: Guilherme Lima, Mônica Hillman e Ahirton Lopes.
 - **Apoio**: Google Gemini (IA Generativa).
 
 ---
