@@ -50,6 +50,36 @@
     pointer-events: none;
 }
 
+.devfest-btn {
+    margin-left: 15px;
+    padding: 0 20px;
+    height: 46px;
+    border-radius: 24px;
+    border: 1px solid var(--border-color);
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.devfest-btn:hover {
+    background: var(--bg-tertiary);
+    transform: translateY(-2px);
+}
+
+.devfest-btn.active {
+    background: #4285F4;
+    /* Google Blue */
+    color: white;
+    border-color: #4285F4;
+    box-shadow: 0 0 15px rgba(66, 133, 244, 0.4);
+}
+
 /* Modal Styles */
 .creator-modal {
     position: fixed;
