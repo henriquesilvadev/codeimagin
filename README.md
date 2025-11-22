@@ -50,9 +50,7 @@ https://github.com/user-attachments/assets/codeimagin-cypress-demo.mp4
 
 ### 🎥 Demonstração da Aplicação
 
-![CodeImag.in Demo](assets/images/demo.gif)
-
-> **Nota:** Para adicionar o GIF, coloque o arquivo `demo.gif` na pasta `assets/images/` ou use um link externo.
+![CodeImag.in Demo](https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExMWtuMXhjN2Fid3VoN2hqM3B3eWMxam5ubGFhdmlyb2swOXRtOGh3cCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/6mAVBNoiGB2mrroYyP/giphy.gif)
 
 ## 🚀 Tecnologias Utilizadas
 
