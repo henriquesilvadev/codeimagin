@@ -152,20 +152,17 @@
             const rank = getJediRank();
             const prompt = generatePrompt(rank);
 
-            // Get API key from environment or config
-            const apiKey = await getApiKey();
+            console.log(`🌟 Generating ${rank} avatar...`);
 
-            if (!apiKey) {
-                throw new Error('API key não encontrada. Configure GEMINI_API_KEY.');
-            }
-
-            // Call Gemini API to generate Jedi avatar
-            const generatedImage = await callGeminiImageGeneration(apiKey, prompt, userPhoto);
+            // Apply Jedi transformation directly (Gemini can't generate images)
+            // We use Canvas to create the holographic blue effect
+            const generatedImage = await applyJediTransformation(userPhoto, prompt);
 
             if (generatedImage) {
                 generatedAvatar = generatedImage;
                 displayHologram(rank);
                 if (modal) modal.classList.remove('active');
+                console.log('✅ Avatar generated successfully!');
             } else {
                 throw new Error('Falha ao gerar avatar');
             }
@@ -183,78 +180,6 @@
         } finally {
             if (generateBtn) generateBtn.disabled = false;
             if (loadingSpinner) loadingSpinner.classList.remove('active');
-        }
-    }
-
-    async function getApiKey() {
-        // ⚠️ AVISO IMPORTANTE ⚠️
-        // Esta chave está exposta APENAS para fins de DEMONSTRAÇÃO.
-        // NÃO usar este padrão em produção. Em sistemas reais, a chave deve ficar
-        // em um backend seguro ou função serverless.
-        //
-        // Esta chave será revogada após a apresentação da demo.
-        // Usando a mesma chave do chatbot para consistência
-        return 'AIzaSyC1cHY4tsDoZpIJoJWP_y_47VaB9FcsmCs';
-    }
-
-    async function callGeminiImageGeneration(apiKey, prompt, photoBase64) {
-        try {
-            // Use Gemini's generateContent with image input
-            const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
-
-            // Extract base64 data from data URL
-            const base64Data = photoBase64.split(',')[1];
-            const mimeType = photoBase64.split(';')[0].split(':')[1];
-
-            const requestBody = {
-                contents: [{
-                    parts: [
-                        {
-                            text: `${prompt}\n\nIMPORTANT: Describe in detail how to transform this person into a ${prompt.includes('Master') ? 'Jedi Master' : prompt.includes('Knight') ? 'Jedi Knight' : 'Padawan'} with holographic blue glow effect, Star Wars style. Be very specific about the visual transformation.`
-                        },
-                        {
-                            inline_data: {
-                                mime_type: mimeType,
-                                data: base64Data
-                            }
-                        }
-                    ]
-                }],
-                generationConfig: {
-                    temperature: 0.9,
-                    topK: 40,
-                    topP: 0.95,
-                    maxOutputTokens: 1024,
-                }
-            };
-
-            const response = await fetch(API_URL, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(requestBody)
-            });
-
-            if (!response.ok) {
-                const errorData = await response.json();
-                throw new Error(`API Error: ${errorData.error?.message || 'Unknown error'}`);
-            }
-
-            const data = await response.json();
-
-            // For now, Gemini doesn't generate images directly, so we'll use the description
-            // to apply enhanced CSS filters to the original photo
-            // In a production app, you'd use Imagen API or another image generation service
-
-            console.log('Gemini response:', data);
-
-            // Apply enhanced holographic effect to original photo
-            return applyJediTransformation(photoBase64, prompt);
-
-        } catch (error) {
-            console.error('Gemini API error:', error);
-            throw error;
         }
     }
 
