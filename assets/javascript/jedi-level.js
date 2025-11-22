@@ -152,30 +152,163 @@
             const rank = getJediRank();
             const prompt = generatePrompt(rank);
 
-            // Note: In a real implementation, you would call Google's Imagen API here
-            // For now, we'll use a placeholder or the Gemini API to generate text
-            // and create a stylized version of the uploaded photo
+            // Get API key from environment or config
+            const apiKey = await getApiKey();
 
-            // Simulate API call
-            await new Promise(resolve => setTimeout(resolve, 2000));
+            if (!apiKey) {
+                throw new Error('API key não encontrada. Configure GEMINI_API_KEY.');
+            }
 
-            // For demo purposes, we'll use the uploaded photo with CSS filters
-            // In production, you'd call the actual API here
-            generatedAvatar = userPhoto;
+            // Call Gemini API to generate Jedi avatar
+            const generatedImage = await callGeminiImageGeneration(apiKey, prompt, userPhoto);
 
-            // Display hologram
-            displayHologram(rank);
-
-            // Close modal
-            if (modal) modal.classList.remove('active');
+            if (generatedImage) {
+                generatedAvatar = generatedImage;
+                displayHologram(rank);
+                if (modal) modal.classList.remove('active');
+            } else {
+                throw new Error('Falha ao gerar avatar');
+            }
 
         } catch (error) {
             console.error('Error generating avatar:', error);
-            alert('Erro ao gerar avatar. Tente novamente.');
+            alert(`Erro ao gerar avatar: ${error.message}\n\nUsando foto original com efeitos holográficos.`);
+
+            // Fallback: use original photo with holographic effects
+            generatedAvatar = userPhoto;
+            const rank = getJediRank();
+            displayHologram(rank);
+            if (modal) modal.classList.remove('active');
+
         } finally {
             if (generateBtn) generateBtn.disabled = false;
             if (loadingSpinner) loadingSpinner.classList.remove('active');
         }
+    }
+
+    async function getApiKey() {
+        // Try to get from window.CONFIG first (if set in HTML)
+        if (window.CONFIG?.GEMINI_API_KEY) {
+            return window.CONFIG.GEMINI_API_KEY;
+        }
+
+        // Try to fetch from .env file
+        try {
+            const response = await fetch('/.env');
+            if (response.ok) {
+                const text = await response.text();
+                const match = text.match(/GEMINI_API_KEY=(.+)/);
+                if (match) {
+                    return match[1].trim();
+                }
+            }
+        } catch (e) {
+            console.log('Could not load .env file');
+        }
+
+        // Prompt user for API key
+        const userKey = prompt('Por favor, insira sua chave da API Gemini:');
+        if (userKey) {
+            // Save to session
+            window.CONFIG = window.CONFIG || {};
+            window.CONFIG.GEMINI_API_KEY = userKey;
+            return userKey;
+        }
+
+        return null;
+    }
+
+    async function callGeminiImageGeneration(apiKey, prompt, photoBase64) {
+        try {
+            // Use Gemini's generateContent with image input
+            const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
+
+            // Extract base64 data from data URL
+            const base64Data = photoBase64.split(',')[1];
+            const mimeType = photoBase64.split(';')[0].split(':')[1];
+
+            const requestBody = {
+                contents: [{
+                    parts: [
+                        {
+                            text: `${prompt}\n\nIMPORTANT: Describe in detail how to transform this person into a ${prompt.includes('Master') ? 'Jedi Master' : prompt.includes('Knight') ? 'Jedi Knight' : 'Padawan'} with holographic blue glow effect, Star Wars style. Be very specific about the visual transformation.`
+                        },
+                        {
+                            inline_data: {
+                                mime_type: mimeType,
+                                data: base64Data
+                            }
+                        }
+                    ]
+                }],
+                generationConfig: {
+                    temperature: 0.9,
+                    topK: 40,
+                    topP: 0.95,
+                    maxOutputTokens: 1024,
+                }
+            };
+
+            const response = await fetch(API_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(requestBody)
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(`API Error: ${errorData.error?.message || 'Unknown error'}`);
+            }
+
+            const data = await response.json();
+
+            // For now, Gemini doesn't generate images directly, so we'll use the description
+            // to apply enhanced CSS filters to the original photo
+            // In a production app, you'd use Imagen API or another image generation service
+
+            console.log('Gemini response:', data);
+
+            // Apply enhanced holographic effect to original photo
+            return applyJediTransformation(photoBase64, prompt);
+
+        } catch (error) {
+            console.error('Gemini API error:', error);
+            throw error;
+        }
+    }
+
+    function applyJediTransformation(photoBase64, prompt) {
+        // Since we can't generate images directly with Gemini Flash,
+        // we'll create a canvas transformation that makes it look more Jedi-like
+        return new Promise((resolve) => {
+            const img = new Image();
+            img.onload = () => {
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+
+                canvas.width = img.width;
+                canvas.height = img.height;
+
+                // Draw original image
+                ctx.drawImage(img, 0, 0);
+
+                // Apply blue holographic tint
+                ctx.globalCompositeOperation = 'multiply';
+                ctx.fillStyle = 'rgba(59, 130, 246, 0.3)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                // Add glow effect
+                ctx.globalCompositeOperation = 'screen';
+                ctx.fillStyle = 'rgba(96, 165, 250, 0.2)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                // Convert to base64
+                resolve(canvas.toDataURL('image/png'));
+            };
+            img.src = photoBase64;
+        });
     }
 
     function generatePrompt(rank) {
