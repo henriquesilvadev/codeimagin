@@ -49,6 +49,7 @@
   <link rel="stylesheet" href="assets/stylesheet/chatbot.css">
   <link rel="stylesheet" href="assets/stylesheet/auth.css">
   <link rel="stylesheet" href="assets/stylesheet/benchmark.css">
+  <link rel="stylesheet" href="assets/stylesheet/jedi-level.css">
 
   <!-- Google Sign-In -->
   <script src="https://accounts.google.com/gsi/client" async></script>
@@ -242,6 +243,13 @@
           <div class="stat-number" data-target="119">0</div>
           <div class="stat-label">Commits</div>
         </div>
+      </div>
+
+      <!-- Jedi Level Button -->
+      <div style="text-align: center;">
+        <button class="jedi-level-btn" id="jediLevelBtn">
+          Saiba seu Nível Jedi
+        </button>
       </div>
     </section>
 
@@ -816,6 +824,90 @@
     }
   </script>
   <script src="assets/javascript/cookies.js"></script>
+  <script src="assets/javascript/jedi-level.js"></script>
+
+  <!-- Jedi Level Modal -->
+  <div class="jedi-modal" id="jediModal">
+    <div class="jedi-modal-content">
+      <button class="jedi-modal-close" id="jediModalClose">&times;</button>
+
+      <div class="jedi-modal-header">
+        <h2 class="jedi-modal-title">⚔️ Descubra seu Nível Jedi</h2>
+        <p class="jedi-modal-subtitle">Avalie suas habilidades e gere seu avatar holográfico</p>
+      </div>
+
+      <!-- Skill Selectors -->
+      <div class="skill-section">
+        <div class="skill-label">
+          <span><span class="skill-icon">📄</span>HTML</span>
+          <span class="skill-value" id="htmlValue">50%</span>
+        </div>
+        <input type="range" min="0" max="100" value="50" class="skill-slider" id="htmlSlider">
+      </div>
+
+      <div class="skill-section">
+        <div class="skill-label">
+          <span><span class="skill-icon">🎨</span>CSS</span>
+          <span class="skill-value" id="cssValue">50%</span>
+        </div>
+        <input type="range" min="0" max="100" value="50" class="skill-slider" id="cssSlider">
+      </div>
+
+      <div class="skill-section">
+        <div class="skill-label">
+          <span><span class="skill-icon">⚡</span>JavaScript</span>
+          <span class="skill-value" id="javascriptValue">50%</span>
+        </div>
+        <input type="range" min="0" max="100" value="50" class="skill-slider" id="javascriptSlider">
+      </div>
+
+      <!-- Level Display -->
+      <div class="jedi-level-display">
+        <div class="jedi-rank" id="jediRank">⚔️ Cavaleiro Jedi</div>
+        <div class="jedi-rank-description" id="jediRankDescription">Caminho do Equilíbrio</div>
+      </div>
+
+      <!-- Photo Upload -->
+      <div class="photo-upload-section">
+        <label style="color: #e2e8f0; font-weight: 600; margin-bottom: 0.5rem; display: block;">
+          📸 Sua Foto
+        </label>
+        <div class="photo-upload-area" id="photoUploadArea">
+          <input type="file" id="photoInput" accept="image/*">
+          <p style="color: #94a3b8; margin: 0;">📷 Clique para fazer upload da sua foto</p>
+          <small style="color: #64748b; display: block; margin-top: 0.5rem;">Será usada para gerar seu avatar
+            holográfico</small>
+        </div>
+        <div class="photo-preview-container" id="photoPreview">
+          <img id="photoPreviewImg" class="photo-preview-img" alt="Preview">
+        </div>
+      </div>
+
+      <!-- Loading Spinner -->
+      <div class="loading-spinner" id="loadingSpinner">
+        <div class="spinner"></div>
+        <p style="color: #94a3b8;">Gerando seu avatar holográfico...</p>
+      </div>
+
+      <!-- Generate Button -->
+      <button class="generate-avatar-btn" id="generateAvatarBtn">
+        ⚔️ Gerar Avatar Jedi
+      </button>
+    </div>
+  </div>
+
+  <!-- Holographic Avatar Display -->
+  <div class="hologram-container" id="hologramContainer">
+    <button class="hologram-close" id="hologramClose">&times;</button>
+    <div class="hologram-badge" id="hologramBadge">⚔️ Cavaleiro Jedi</div>
+    <div class="hologram-avatar">
+      <div class="hologram-inner">
+        <img id="hologramImage" class="hologram-image" alt="Jedi Avatar">
+        <div class="hologram-scanlines"></div>
+        <div class="hologram-glow"></div>
+      </div>
+    </div>
+  </div>
 </body>
 
 </html>
