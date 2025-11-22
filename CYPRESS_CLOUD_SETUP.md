@@ -21,7 +21,7 @@ O `projectId` já está configurado no `cypress.config.js` como `'codeimagin'`.
 Se o Cypress Cloud gerar um ID diferente, atualize em `cypress.config.js`:
 
 ```javascript
-projectId: 'seu-project-id-aqui'
+projectId: 'pzc5fm'
 ```
 
 ## 4. Obter Record Key

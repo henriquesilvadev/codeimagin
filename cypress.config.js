@@ -1,7 +1,7 @@
 const { defineConfig } = require('cypress')
 
 module.exports = defineConfig({
-    projectId: 'codeimagin',
+    projectId: 'pzc5fm',
     e2e: {
         baseUrl: 'http://localhost:8080',
         video: true,
