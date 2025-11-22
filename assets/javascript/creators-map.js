@@ -101,6 +101,110 @@ function initMap() {
             filterMarkers(e.target.value);
         });
     }
+
+    // DevFest Toggle Listener
+    const devfestBtn = document.getElementById('devfestToggle');
+    if (devfestBtn) {
+        devfestBtn.addEventListener('click', toggleDevFest);
+    }
+}
+
+let isDevFestMode = false;
+let devfestMarkers = [];
+
+function toggleDevFest() {
+    isDevFestMode = !isDevFestMode;
+    const btn = document.getElementById('devfestToggle');
+    const searchInput = document.getElementById('mapSearchInput');
+
+    if (isDevFestMode) {
+        // Switch to DevFest
+        btn.classList.add('active');
+        btn.innerHTML = `
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+              <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+            </svg>
+            Fechar DevFest
+        `;
+
+        // Hide creator markers
+        markers.forEach(marker => marker.setMap(null));
+
+        // Disable search
+        if (searchInput) {
+            searchInput.disabled = true;
+            searchInput.placeholder = "Modo DevFest Ativo";
+            searchInput.value = "";
+        }
+
+        // Show DevFest markers
+        showDevFestMarkers();
+
+        // Zoom out to see world
+        map.setZoom(2);
+        map.setCenter({ lat: 20, lng: 0 });
+
+    } else {
+        // Switch back to Creators
+        btn.classList.remove('active');
+        btn.innerHTML = `
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
+            </svg>
+            Google DevFest
+        `;
+
+        // Hide DevFest markers
+        devfestMarkers.forEach(marker => marker.setMap(null));
+        devfestMarkers = []; // Clear array
+
+        // Enable search
+        if (searchInput) {
+            searchInput.disabled = false;
+            searchInput.placeholder = "Buscar criador, linguagem ou país...";
+        }
+
+        // Show creator markers
+        markers.forEach(marker => marker.setMap(map));
+    }
+}
+
+function showDevFestMarkers() {
+    if (typeof devfestData === 'undefined') return;
+
+    // Google 'G' Icon
+    const googleIcon = {
+        url: "https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg",
+        scaledSize: new google.maps.Size(30, 30),
+        origin: new google.maps.Point(0, 0),
+        anchor: new google.maps.Point(15, 15)
+    };
+
+    devfestData.forEach(event => {
+        const marker = new google.maps.Marker({
+            position: event.location,
+            map: map,
+            title: `DevFest ${event.city}`,
+            icon: googleIcon,
+            animation: google.maps.Animation.DROP
+        });
+
+        const infoWindow = new google.maps.InfoWindow({
+            content: `
+                <div style="color: #333; padding: 5px;">
+                    <h3 style="margin: 0 0 5px 0;">DevFest ${event.city}</h3>
+                    <p style="margin: 0;"><strong>Data:</strong> ${event.date}</p>
+                    <p style="margin: 0;"><strong>País:</strong> ${event.country}</p>
+                </div>
+            `
+        });
+
+        marker.addListener("click", () => {
+            infoWindow.open(map, marker);
+        });
+
+        devfestMarkers.push(marker);
+    });
 }
 
 function addMarkers() {
