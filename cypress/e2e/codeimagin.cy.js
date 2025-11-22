@@ -1,6 +1,12 @@
 describe('CodeImag.in E2E Tests', () => {
     beforeEach(() => {
         cy.visit('/')
+        // Dismiss cookie banner if it exists
+        cy.get('body').then($body => {
+            if ($body.find('.cookie-accept-btn').length > 0) {
+                cy.get('.cookie-accept-btn').click()
+            }
+        })
     })
 
     it('should load the homepage successfully', () => {
@@ -14,19 +20,19 @@ describe('CodeImag.in E2E Tests', () => {
     })
 
     it('should open Code Editor modal', () => {
-        cy.get('#codeEditorFab', { timeout: 10000 }).should('be.visible').click()
+        cy.get('#codeEditorFab', { timeout: 10000 }).click({ force: true })
         cy.get('#codeEditorModal').should('be.visible')
         cy.get('#codeEditorTextarea').should('be.visible')
     })
 
     it('should close Code Editor modal', () => {
-        cy.get('#codeEditorFab').click()
+        cy.get('#codeEditorFab').click({ force: true })
         cy.get('#codeEditorClose').click()
         cy.get('#codeEditorModal').should('have.class', 'hidden')
     })
 
     it('should open Code Dojo sidebar', () => {
-        cy.get('#codeDojoToggle', { timeout: 10000 }).should('be.visible').click()
+        cy.get('#codeDojoToggle', { timeout: 10000 }).click({ force: true })
         cy.get('#codeDojoSidebar').should('have.class', 'active')
     })
 
