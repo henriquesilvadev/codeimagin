@@ -44,8 +44,6 @@ O projeto possui testes end-to-end automatizados com **Cypress**, garantindo a q
 
 Veja os testes E2E rodando automaticamente no site em produção:
 
-[https://github.com/henriquesilvadev/codeimagin/assets/codeimagin-cypress-demo.mp4](https://github.com/henriquesilvadev/codeimagin/main/assets/codeimagin-cypress-demo.mp4)
-
 **Ver testes rodando**: [Cypress Cloud Dashboard](https://cloud.cypress.io/projects/pzc5fm) | [Vídeo local](cypress/videos/codeimagin.cy.js.mp4)
 
 ## 🚀 Tecnologias Utilizadas
