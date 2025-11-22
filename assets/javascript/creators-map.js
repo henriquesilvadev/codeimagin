@@ -181,7 +181,12 @@ function createModalHTML() {
         </div>
     `;
 
-    document.body.appendChild(modal);
+    const mapContainer = document.getElementById('creatorsMap');
+    if (mapContainer) {
+        mapContainer.appendChild(modal);
+    } else {
+        document.body.appendChild(modal);
+    }
 
     // Close events
     const closeBtn = document.getElementById('creatorModalClose');
