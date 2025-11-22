@@ -8,7 +8,7 @@ class Chatbot {
         //
         // Esta chave será revogada após a apresentação da demo.
         this.apiKey = 'AIzaSyCeHmdAe3aBmWPMa5JvNgBuLg8tdvvSka8';
-        this.apiUrl = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent';
+        this.apiUrl = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent';
         this.isOpen = false;
         this.messages = [];
 
