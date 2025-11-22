@@ -50,6 +50,10 @@ Veja os testes E2E rodando automaticamente no site em produção:
 
 **Ver testes rodando**: [Cypress Cloud Dashboard](https://cloud.cypress.io/projects/pzc5fm) | [Vídeo local](cypress/videos/codeimagin.cy.js.mp4)
 
+### 🎥 Demonstração da Aplicação
+
+![CodeImag.in Demo](https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExMWtuMXhjN2Fid3VoN2hqM3B3eWMxam5ubGFhdmlyb2swOXRtOGh3cCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/6mAVBNoiGB2mrroYyP/giphy.gif)
+
 ## 🚀 Tecnologias Utilizadas
 
 O projeto foi desenvolvido utilizando as seguintes tecnologias:
