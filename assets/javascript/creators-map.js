@@ -187,10 +187,14 @@ function showDevFestMarkers() {
 
         const infoWindow = new google.maps.InfoWindow({
             content: `
-                <div style="color: #333; padding: 5px;">
-                    <h3 style="margin: 0 0 5px 0;">DevFest ${event.city}</h3>
-                    <p style="margin: 0;"><strong>Data:</strong> ${event.date}</p>
-                    <p style="margin: 0;"><strong>País:</strong> ${event.country}</p>
+                <div style="max-width: 280px; font-family: 'Inter', sans-serif;">
+                    ${event.image ? `<img src="${event.image}" alt="DevFest ${event.city}" style="width: 100%; height: 140px; object-fit: cover; border-radius: 8px 8px 0 0; margin: -10px -10px 10px -10px;">` : ''}
+                    <div style="padding: ${event.image ? '0 5px 5px 5px' : '5px'};">
+                        <h3 style="margin: 0 0 8px 0; color: #1a73e8; font-size: 18px; font-weight: 600;">DevFest ${event.city}</h3>
+                        <p style="margin: 0 0 5px 0; color: #5f6368; font-size: 14px;"><strong>📅 Data:</strong> ${event.date}</p>
+                        <p style="margin: 0 0 10px 0; color: #5f6368; font-size: 14px;"><strong>🌍 País:</strong> ${event.country}</p>
+                        ${event.link ? `<a href="${event.link}" target="_blank" rel="noopener noreferrer" style="display: inline-block; padding: 8px 16px; background: #1a73e8; color: white; text-decoration: none; border-radius: 4px; font-size: 14px; font-weight: 500; transition: background 0.3s;">Ver Evento →</a>` : ''}
+                    </div>
                 </div>
             `
         });
