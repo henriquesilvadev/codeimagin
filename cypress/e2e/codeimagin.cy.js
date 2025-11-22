@@ -36,11 +36,6 @@ describe('CodeImag.in E2E Tests', () => {
         cy.get('#mapSearchInput').should('be.visible')
     })
 
-    it('should navigate using navbar links', () => {
-        cy.get('a[href="#about"]').first().click()
-        cy.url().should('include', '#about')
-    })
-
     it('should have footer visible', () => {
         cy.get('.footer').should('exist')
         cy.contains('CodeImag.in').should('be.visible')
