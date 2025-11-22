@@ -8,7 +8,7 @@
 > **Sua base de conhecimento dev rápida e intuitiva.**
 > Explore documentação, exemplos de código e conceitos fundamentais de diversas linguagens e tecnologias em um só lugar.
 
-### 🎬 [Assista aos Testes E2E Rodando em Produção](https://cloud.cypress.io/projects/pzc5fm/runs/11/overview/241a5ba0-2675-4d39-a1ee-56073d81104b/video?roarHideRunsWithDiffGroupsAndTags=1&utm_source=Dashboard&utm_medium=Share+URL&utm_campaign=Video)
+![CodeImag.in Demo](https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExMWtuMXhjN2Fid3VoN2hqM3B3eWMxam5ubGFhdmlyb2swOXRtOGh3cCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/6mAVBNoiGB2mrroYyP/giphy.gif)
 
 ---
 
@@ -50,9 +50,7 @@ Veja os testes E2E rodando automaticamente no site em produção:
 
 **Ver testes rodando**: [Cypress Cloud Dashboard](https://cloud.cypress.io/projects/pzc5fm) | [Vídeo local](cypress/videos/codeimagin.cy.js.mp4)
 
-### 🎥 Demonstração da Aplicação
-
-![CodeImag.in Demo](https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExMWtuMXhjN2Fid3VoN2hqM3B3eWMxam5ubGFhdmlyb2swOXRtOGh3cCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/6mAVBNoiGB2mrroYyP/giphy.gif)
+### 🎬 [Assista aos Testes E2E Rodando em Produção](https://cloud.cypress.io/projects/pzc5fm/runs/11/overview/241a5ba0-2675-4d39-a1ee-56073d81104b/video?roarHideRunsWithDiffGroupsAndTags=1&utm_source=Dashboard&utm_medium=Share+URL&utm_campaign=Video)
 
 ## 🚀 Tecnologias Utilizadas
 
