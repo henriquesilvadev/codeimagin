@@ -180,20 +180,13 @@ function showDevFestMarkers() {
     }
     console.log('devfestData found:', devfestData.length, 'items');
 
-    // Google 'G' Icon
-    const googleIcon = {
-        url: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png",
-        scaledSize: new google.maps.Size(30, 30),
-        origin: new google.maps.Point(0, 0),
-        anchor: new google.maps.Point(15, 15)
-    };
+
 
     devfestData.forEach(event => {
         const marker = new google.maps.Marker({
             position: event.location,
             map: map,
             title: `DevFest ${event.city}`,
-            icon: googleIcon,
             animation: google.maps.Animation.DROP
         });
 
