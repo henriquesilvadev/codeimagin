@@ -1,13 +1,7 @@
 describe('CodeImag.in E2E Tests', () => {
     beforeEach(() => {
         cy.visit('/')
-        // Wait a bit for page to load and dismiss cookie banner if visible
-        cy.wait(500)
-        cy.get('.cookie-accept-btn').then($btn => {
-            if ($btn.is(':visible')) {
-                cy.wrap($btn).eq(0).click()
-            }
-        })
+        cy.wait(1000) // Wait for page to fully load
     })
 
     it('should load the homepage successfully', () => {
