@@ -4,7 +4,7 @@ describe('CodeImag.in E2E Tests', () => {
         // Dismiss cookie banner if it exists
         cy.get('body').then($body => {
             if ($body.find('.cookie-accept-btn').length > 0) {
-                cy.get('.cookie-accept-btn').click()
+                cy.get('.cookie-accept-btn').first().click()
             }
         })
     })
