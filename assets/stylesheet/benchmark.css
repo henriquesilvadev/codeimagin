@@ -2,9 +2,9 @@
 
 .benchmark-section {
     padding: 4rem 2rem;
-    background: #0f172a;
+    background: var(--bg-primary);
     /* Dark slate background matching page */
-    color: #e2e8f0;
+    color: var(--text-primary);
 }
 
 .benchmark-container {
@@ -21,12 +21,12 @@
 .benchmark-title {
     font-size: 2rem;
     font-weight: 600;
-    color: #f8fafc;
+    color: var(--text-primary);
     margin-bottom: 0.5rem;
 }
 
 .benchmark-subtitle {
-    color: #94a3b8;
+    color: var(--text-secondary);
     font-size: 1rem;
     font-weight: 400;
 }
@@ -36,9 +36,9 @@
     display: grid;
     grid-template-columns: 250px 1fr;
     gap: 2rem;
-    background: #1e293b;
+    background: var(--bg-secondary);
     /* Slightly lighter dark background for card */
-    border: 1px solid #334155;
+    border: 1px solid var(--border-color);
     border-radius: 8px;
     overflow: hidden;
     min-height: 600px;
@@ -46,8 +46,8 @@
 
 /* Sidebar */
 .benchmark-sidebar {
-    background: #0f172a;
-    border-right: 1px solid #334155;
+    background: var(--bg-primary);
+    border-right: 1px solid var(--border-color);
     padding: 1.5rem;
     display: flex;
     flex-direction: column;
@@ -57,7 +57,7 @@
     font-size: 0.85rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    color: #64748b;
+    color: var(--text-secondary);
     margin-bottom: 1rem;
     font-weight: 600;
 }
@@ -72,7 +72,7 @@
 .sidebar-item {
     padding: 0.75rem 1rem;
     font-size: 0.95rem;
-    color: #94a3b8;
+    color: var(--text-secondary);
     cursor: pointer;
     border-radius: 4px;
     transition: all 0.2s ease;
@@ -80,16 +80,16 @@
 }
 
 .sidebar-item:hover {
-    background: #1e293b;
-    color: #f1f5f9;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
 }
 
 .sidebar-item.active {
-    background: #334155;
+    background: var(--bg-secondary);
     color: #fff;
     font-weight: 500;
-    border-left: 3px solid #60a5fa;
-    /* Blue accent */
+    border-left: 3px solid var(--accent-tertiary);
+    /* Purple accent */
 }
 
 .sidebar-item.inactive {
@@ -128,7 +128,8 @@
 .line-path.active {
     stroke-opacity: 1;
     stroke-width: 3;
-    filter: drop-shadow(0 0 4px rgba(96, 165, 250, 0.5));
+    filter: drop-shadow(0 0 4px rgba(129, 43, 140, 0.5));
+    /* Purple glow */
 }
 
 .line-path.hovered {
@@ -138,7 +139,7 @@
 }
 
 .data-point {
-    fill: #1e293b;
+    fill: var(--bg-secondary);
     /* Match bg */
     stroke-width: 2;
     r: 4;
@@ -161,11 +162,11 @@
 .chart-tooltip {
     position: absolute;
     display: none;
-    background: #0f172a;
-    border: 1px solid #334155;
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
     padding: 0.75rem;
     border-radius: 4px;
-    color: #f1f5f9;
+    color: var(--text-primary);
     font-size: 0.9rem;
     pointer-events: none;
     z-index: 100;
@@ -173,7 +174,7 @@
 }
 
 .tooltip-year {
-    color: #94a3b8;
+    color: var(--text-secondary);
     font-size: 0.8rem;
     margin-bottom: 0.25rem;
 }

@@ -10,13 +10,13 @@
         height: 500,
         padding: { top: 40, right: 60, bottom: 60, left: 60 },
         colors: {
-            grid: 'rgba(51, 65, 85, 0.5)', // #334155
-            axis: '#475569', // #475569
-            text: '#94a3b8',
-            lineDefault: '#475569', // Slate 600 - dimmed
-            lineActive: '#38bdf8',  // Sky 400 - active/highlight
-            tooltipBg: '#0f172a',
-            tooltipBorder: '#334155'
+            grid: 'rgba(255, 255, 255, 0.1)', // Subtle grid for dark theme
+            axis: 'var(--text-muted)',
+            text: 'var(--text-secondary)',
+            lineDefault: 'var(--text-muted)',
+            lineActive: 'var(--accent-tertiary)',  // System Purple
+            tooltipBg: 'var(--bg-primary)',
+            tooltipBorder: 'var(--border-color)'
         }
     };
 
@@ -206,7 +206,7 @@
         // Add hover interaction to inactive lines to make them active temporarily
         if (!isActive) {
             path.addEventListener('mouseenter', () => {
-                path.setAttribute('stroke', '#94a3b8'); // Lighter gray on hover
+                path.setAttribute('stroke', 'var(--text-primary)'); // Highlight on hover
                 path.setAttribute('stroke-width', '2');
             });
             path.addEventListener('mouseleave', () => {
@@ -234,7 +234,7 @@
                 circle.setAttribute('cy', y);
                 circle.setAttribute('r', '4');
                 circle.setAttribute('fill', config.colors.lineActive); // Fill with active color
-                circle.setAttribute('stroke', '#0f172a'); // Dark border
+                circle.setAttribute('stroke', 'var(--bg-secondary)'); // Match bg
                 circle.setAttribute('stroke-width', '2');
                 circle.classList.add('data-point');
 
