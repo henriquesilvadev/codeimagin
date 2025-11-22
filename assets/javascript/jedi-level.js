@@ -187,35 +187,14 @@
     }
 
     async function getApiKey() {
-        // Try to get from window.CONFIG first (if set in HTML)
-        if (window.CONFIG?.GEMINI_API_KEY) {
-            return window.CONFIG.GEMINI_API_KEY;
-        }
-
-        // Try to fetch from .env file
-        try {
-            const response = await fetch('/.env');
-            if (response.ok) {
-                const text = await response.text();
-                const match = text.match(/GEMINI_API_KEY=(.+)/);
-                if (match) {
-                    return match[1].trim();
-                }
-            }
-        } catch (e) {
-            console.log('Could not load .env file');
-        }
-
-        // Prompt user for API key
-        const userKey = prompt('Por favor, insira sua chave da API Gemini:');
-        if (userKey) {
-            // Save to session
-            window.CONFIG = window.CONFIG || {};
-            window.CONFIG.GEMINI_API_KEY = userKey;
-            return userKey;
-        }
-
-        return null;
+        // ⚠️ AVISO IMPORTANTE ⚠️
+        // Esta chave está exposta APENAS para fins de DEMONSTRAÇÃO.
+        // NÃO usar este padrão em produção. Em sistemas reais, a chave deve ficar
+        // em um backend seguro ou função serverless.
+        //
+        // Esta chave será revogada após a apresentação da demo.
+        // Usando a mesma chave do chatbot para consistência
+        return 'AIzaSyC1cHY4tsDoZpIJoJWP_y_47VaB9FcsmCs';
     }
 
     async function callGeminiImageGeneration(apiKey, prompt, photoBase64) {
