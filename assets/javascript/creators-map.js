@@ -185,3 +185,19 @@ function openCreatorModal(creator) {
 
 // Load map when window loads
 window.initMap = initMap;
+
+// Handle Authentication Errors
+window.gm_authFailure = function () {
+    const mapElement = document.getElementById("creatorsMap");
+    if (mapElement) {
+        mapElement.innerHTML = `
+            <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; background-color: #242f3e; color: #fff; text-align: center; padding: 20px;">
+                <h3 style="color: #ff6b6b; margin-bottom: 10px;">Erro no Mapa</h3>
+                <p>Não foi possível carregar o Google Maps.</p>
+                <p style="font-size: 0.8rem; opacity: 0.8;">Verifique a chave da API (API Key) e as configurações de faturamento no Google Cloud Console.</p>
+            </div>
+        `;
+        mapElement.style.border = "1px solid #ff6b6b";
+    }
+    console.error("Google Maps Authentication Failure: Please check your API key and billing status.");
+};
