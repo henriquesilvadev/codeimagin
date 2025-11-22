@@ -3,7 +3,7 @@ const { defineConfig } = require('cypress')
 module.exports = defineConfig({
     projectId: 'pzc5fm',
     e2e: {
-        baseUrl: 'http://localhost:8080',
+        baseUrl: 'http://localhost:8000',
         video: true,
         videosFolder: 'cypress/videos',
         screenshotsFolder: 'cypress/screenshots',
