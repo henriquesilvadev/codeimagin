@@ -30,27 +30,7 @@ O projeto foi construído com foco em:
 - 📱 **Totalmente Responsivo**: Layout adaptável para celulares, tablets e desktops.
 - ⚡ **PWA**: Instale o app e tenha acesso rápido direto da sua tela inicial.
 - 🎨 **Design Premium**: Interface inspirada em ferramentas profissionais, com modo escuro nativo.
-- 🧪 **Testes E2E**: Cobertura completa de testes automatizados com Cypress.
-
-## 🧪 Testes E2E
-
-[![Cypress Cloud](https://img.shields.io/endpoint?url=https://cloud.cypress.io/badge/simple/pzc5fm&style=flat&logo=cypress)](https://cloud.cypress.io/projects/pzc5fm)
-
-O projeto possui testes end-to-end automatizados com **Cypress**, garantindo a qualidade e funcionamento de todos os recursos:
-
-- ✅ Busca e navegação
-- ✅ Code Editor interativo
-- ✅ Mapa de criadores
-- ✅ Autenticação
-- ✅ Responsividade
-
-### 🎬 Demonstração dos Testes
-
-Veja os testes E2E rodando automaticamente no site em produção:
-
-**Ver testes rodando**: [Cypress Cloud Dashboard](https://cloud.cypress.io/projects/pzc5fm) | [Vídeo local](cypress/videos/codeimagin.cy.js.mp4)
-
-### 🎬 [Assista aos Testes E2E Rodando em Produção](https://cloud.cypress.io/projects/pzc5fm/runs/11/overview/241a5ba0-2675-4d39-a1ee-56073d81104b/video?roarHideRunsWithDiffGroupsAndTags=1&utm_source=Dashboard&utm_medium=Share+URL&utm_campaign=Video)
+- 🧪 **Testes E2E**: Cobertura completa de testes automatizados com Cypress. [Ver documentação de testes →](TESTING.md)
 
 ## 🚀 Tecnologias Utilizadas
 
