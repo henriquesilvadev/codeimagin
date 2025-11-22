@@ -26,6 +26,21 @@ O projeto foi construído com foco em:
 - 📱 **Totalmente Responsivo**: Layout adaptável para celulares, tablets e desktops.
 - ⚡ **PWA**: Instale o app e tenha acesso rápido direto da sua tela inicial.
 - 🎨 **Design Premium**: Interface inspirada em ferramentas profissionais, com modo escuro nativo.
+- 🧪 **Testes E2E**: Cobertura completa de testes automatizados com Cypress.
+
+## 🧪 Testes E2E
+
+[![Cypress Cloud](https://img.shields.io/endpoint?url=https://cloud.cypress.io/badge/simple/pzc5fm&style=flat&logo=cypress)](https://cloud.cypress.io/projects/pzc5fm)
+
+O projeto possui testes end-to-end automatizados com **Cypress**, garantindo a qualidade e funcionamento de todos os recursos:
+
+- ✅ Busca e navegação
+- ✅ Code Editor interativo
+- ✅ Mapa de criadores
+- ✅ Autenticação
+- ✅ Responsividade
+
+**Ver testes rodando**: [Cypress Cloud Dashboard](https://cloud.cypress.io/projects/pzc5fm) | [Vídeo local](cypress/videos/codeimagin.cy.js.mp4)
 
 ## 🚀 Tecnologias Utilizadas
 
