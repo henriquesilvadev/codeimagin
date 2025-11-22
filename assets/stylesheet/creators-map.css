@@ -54,7 +54,7 @@
 .creator-modal {
     position: fixed;
     inset: 0;
-    z-index: 10002;
+    z-index: 99999999;
     /* Above everything else */
     display: flex;
     align-items: center;
