@@ -202,14 +202,23 @@ function openCreatorModal(creator) {
         modal = document.getElementById('creatorModal');
     }
 
+    // Generate fallback avatar if no photo
+    const photoUrl = creator.photo || `https://api.dicebear.com/7.x/bottts-neutral/svg?seed=${encodeURIComponent(creator.name)}&backgroundColor=812B8C`;
+
     // Populate data
-    document.getElementById('creatorImage').src = creator.photo;
-    document.getElementById('creatorImage').alt = creator.name;
+    const imgElement = document.getElementById('creatorImage');
+    imgElement.src = photoUrl;
+    imgElement.alt = creator.name;
+
+    // Add error handler for broken images
+    imgElement.onerror = function () {
+        this.src = `https://api.dicebear.com/7.x/bottts-neutral/svg?seed=${encodeURIComponent(creator.name)}&backgroundColor=812B8C`;
+        this.onerror = null; // Prevent infinite loop
+    };
+
     document.getElementById('creatorLanguage').textContent = creator.language;
     document.getElementById('creatorName').textContent = creator.name;
     document.getElementById('creatorDescription').textContent = creator.description;
-    // We don't have city names in data, so we might just show generic text or reverse geocode later. 
-    // For now, let's just show the language as the main context.
     document.getElementById('creatorLocationText').textContent = `${creator.location.lat.toFixed(2)}, ${creator.location.lng.toFixed(2)}`;
 
     // Show modal
