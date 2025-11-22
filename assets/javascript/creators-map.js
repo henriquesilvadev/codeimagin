@@ -113,11 +113,13 @@ let isDevFestMode = false;
 let devfestMarkers = [];
 
 function toggleDevFest() {
+    console.log('Toggle DevFest clicked');
     isDevFestMode = !isDevFestMode;
     const btn = document.getElementById('devfestToggle');
     const searchInput = document.getElementById('mapSearchInput');
 
     if (isDevFestMode) {
+        console.log('Switching to DevFest mode');
         // Switch to DevFest
         btn.classList.add('active');
         btn.innerHTML = `
@@ -145,6 +147,7 @@ function toggleDevFest() {
         map.setCenter({ lat: 20, lng: 0 });
 
     } else {
+        console.log('Switching back to Creators mode');
         // Switch back to Creators
         btn.classList.remove('active');
         btn.innerHTML = `
@@ -170,11 +173,16 @@ function toggleDevFest() {
 }
 
 function showDevFestMarkers() {
-    if (typeof devfestData === 'undefined') return;
+    console.log('showDevFestMarkers called');
+    if (typeof devfestData === 'undefined') {
+        console.error('devfestData is undefined');
+        return;
+    }
+    console.log('devfestData found:', devfestData.length, 'items');
 
     // Google 'G' Icon
     const googleIcon = {
-        url: "https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg",
+        url: "https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg",
         scaledSize: new google.maps.Size(30, 30),
         origin: new google.maps.Point(0, 0),
         anchor: new google.maps.Point(15, 15)
