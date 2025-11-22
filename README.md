@@ -48,6 +48,12 @@ https://github.com/user-attachments/assets/codeimagin-cypress-demo.mp4
 
 **Ver testes rodando**: [Cypress Cloud Dashboard](https://cloud.cypress.io/projects/pzc5fm) | [Vídeo local](cypress/videos/codeimagin.cy.js.mp4)
 
+### 🎥 Demonstração da Aplicação
+
+![CodeImag.in Demo](assets/images/demo.gif)
+
+> **Nota:** Para adicionar o GIF, coloque o arquivo `demo.gif` na pasta `assets/images/` ou use um link externo.
+
 ## 🚀 Tecnologias Utilizadas
 
 O projeto foi desenvolvido utilizando as seguintes tecnologias:
