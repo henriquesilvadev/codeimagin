@@ -7,7 +7,7 @@ class Chatbot {
         // em um backend seguro ou função serverless.
         //
         // Esta chave será revogada após a apresentação da demo.
-        this.apiKey = 'AIzaSyCeHmdAe3aBmWPMa5JvNgBuLg8tdvvSka8';
+        this.apiKey = 'AIzaSyC1cHY4tsDoZpIJoJWP_y_47VaB9FcsmCs';
         this.apiUrl = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent';
         this.isOpen = false;
         this.messages = [];
