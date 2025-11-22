@@ -31,7 +31,7 @@ projectId: 'seu-project-id-aqui'
 3. Adicione ao arquivo `.env` (criar se não existir):
 
 ```
-CYPRESS_RECORD_KEY=sua-record-key-aqui
+CYPRESS_RECORD_KEY=d146039a-ee85-4041-b518-dfffc375c490
 ```
 
 **IMPORTANTE**: Adicione `.env` ao `.gitignore` para não commitar a chave!
