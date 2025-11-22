@@ -2,7 +2,7 @@
   "scripts": {
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
-    "cypress:cloud": "cypress run --record --key d146039a-ee85-4041-b518-dfffc375c490"
+    "cypress:cloud": "cypress run --record --key deb148d6-5262-480c-ade3-63e1f3ebf727"
   },
   "devDependencies": {
     "cypress": "^15.7.0"
