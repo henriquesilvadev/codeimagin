@@ -113,13 +113,11 @@ let isDevFestMode = false;
 let devfestMarkers = [];
 
 function toggleDevFest() {
-    console.log('Toggle DevFest clicked');
     isDevFestMode = !isDevFestMode;
     const btn = document.getElementById('devfestToggle');
     const searchInput = document.getElementById('mapSearchInput');
 
     if (isDevFestMode) {
-        console.log('Switching to DevFest mode');
         // Switch to DevFest
         btn.classList.add('active');
         btn.innerHTML = `
@@ -147,7 +145,6 @@ function toggleDevFest() {
         map.setCenter({ lat: 20, lng: 0 });
 
     } else {
-        console.log('Switching back to Creators mode');
         // Switch back to Creators
         btn.classList.remove('active');
         btn.innerHTML = `
@@ -173,12 +170,10 @@ function toggleDevFest() {
 }
 
 function showDevFestMarkers() {
-    console.log('showDevFestMarkers called');
     if (typeof devfestData === 'undefined') {
         console.error('devfestData is undefined');
         return;
     }
-    console.log('devfestData found:', devfestData.length, 'items');
 
 
 
