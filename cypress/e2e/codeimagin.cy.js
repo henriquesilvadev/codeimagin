@@ -37,7 +37,7 @@ describe('CodeImag.in E2E Tests', () => {
     })
 
     it('should navigate using navbar links', () => {
-        cy.get('a[href="#about"]').click()
+        cy.get('a[href="#about"]').first().click()
         cy.url().should('include', '#about')
     })
 
