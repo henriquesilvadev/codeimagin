@@ -3,11 +3,15 @@
 ![Status do Projeto](https://img.shields.io/badge/Status-Em_Desenvolvimento-green)
 ![Licença](https://img.shields.io/badge/License-MIT-blue)
 [![CodeFactor](https://www.codefactor.io/repository/github/henriquesilvadev/codeimagin/badge)](https://www.codefactor.io/repository/github/henriquesilvadev/codeimagin)
+[![Cypress Cloud](https://img.shields.io/endpoint?url=https://cloud.cypress.io/badge/simple/pzc5fm&style=flat&logo=cypress)](https://cloud.cypress.io/projects/pzc5fm)
 
 > **Sua base de conhecimento dev rápida e intuitiva.**
 > Explore documentação, exemplos de código e conceitos fundamentais de diversas linguagens e tecnologias em um só lugar.
 
+### 🎬 [Assista aos Testes E2E Rodando em Produção](https://cloud.cypress.io/projects/pzc5fm/runs/11/overview/241a5ba0-2675-4d39-a1ee-56073d81104b/video?roarHideRunsWithDiffGroupsAndTags=1&utm_source=Dashboard&utm_medium=Share+URL&utm_campaign=Video)
+
 ---
+
 
 ## 📖 Sobre o Projeto
 
