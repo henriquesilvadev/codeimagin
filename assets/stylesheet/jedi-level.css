@@ -1,0 +1,503 @@
+/* ===================================
+   JEDI LEVEL AVATAR GENERATOR
+   Star Wars Themed Feature
+   =================================== */
+
+/* Jedi Button in Stats Section */
+.jedi-level-btn {
+    margin-top: 3rem;
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+    border: 2px solid #60a5fa;
+    border-radius: 12px;
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.jedi-level-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.8);
+    background: linear-gradient(135deg, #2563eb 0%, #60a5fa 100%);
+}
+
+.jedi-level-btn::before {
+    content: '⚔️ ';
+}
+
+/* Modal Overlay */
+.jedi-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 10000;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(10px);
+}
+
+.jedi-modal.active {
+    display: flex;
+}
+
+/* Modal Content */
+.jedi-modal-content {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    border: 2px solid #3b82f6;
+    border-radius: 20px;
+    padding: 2.5rem;
+    max-width: 600px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 0 50px rgba(59, 130, 246, 0.5);
+    position: relative;
+    animation: modalSlideIn 0.4s ease;
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px) scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Modal Header */
+.jedi-modal-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid #3b82f6;
+    padding-bottom: 1rem;
+}
+
+.jedi-modal-title {
+    font-size: 2rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.5rem;
+}
+
+.jedi-modal-subtitle {
+    color: #94a3b8;
+    font-size: 0.95rem;
+}
+
+/* Close Button */
+.jedi-modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: transparent;
+    border: none;
+    color: #94a3b8;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.jedi-modal-close:hover {
+    color: #3b82f6;
+    background: rgba(59, 130, 246, 0.1);
+    transform: rotate(90deg);
+}
+
+/* Skill Selectors */
+.skill-section {
+    margin-bottom: 2rem;
+}
+
+.skill-label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.8rem;
+    color: #e2e8f0;
+    font-weight: 600;
+}
+
+.skill-icon {
+    font-size: 1.5rem;
+    margin-right: 0.5rem;
+}
+
+.skill-value {
+    background: rgba(59, 130, 246, 0.2);
+    padding: 0.3rem 0.8rem;
+    border-radius: 6px;
+    font-weight: 700;
+    color: #60a5fa;
+}
+
+.skill-slider {
+    width: 100%;
+    height: 8px;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.1);
+    outline: none;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.skill-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.8);
+}
+
+.skill-slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.8);
+    border: none;
+}
+
+/* Level Display */
+.jedi-level-display {
+    text-align: center;
+    padding: 1.5rem;
+    background: rgba(59, 130, 246, 0.1);
+    border: 2px solid #3b82f6;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+}
+
+.jedi-rank {
+    font-size: 2.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.5rem;
+}
+
+.jedi-rank-description {
+    color: #94a3b8;
+    font-size: 0.9rem;
+}
+
+/* Photo Upload */
+.photo-upload-section {
+    margin-bottom: 2rem;
+}
+
+.photo-upload-area {
+    border: 2px dashed #3b82f6;
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: rgba(59, 130, 246, 0.05);
+}
+
+.photo-upload-area:hover {
+    border-color: #60a5fa;
+    background: rgba(59, 130, 246, 0.1);
+}
+
+.photo-upload-area input[type="file"] {
+    display: none;
+}
+
+.photo-preview-container {
+    margin-top: 1rem;
+    display: none;
+}
+
+.photo-preview-container.active {
+    display: block;
+}
+
+.photo-preview-img {
+    max-width: 200px;
+    max-height: 200px;
+    border-radius: 12px;
+    border: 2px solid #3b82f6;
+    margin: 0 auto;
+    display: block;
+}
+
+/* Generate Button */
+.generate-avatar-btn {
+    width: 100%;
+    padding: 1.2rem;
+    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+    border: none;
+    border-radius: 12px;
+    color: #000;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 0 20px rgba(251, 191, 36, 0.5);
+}
+
+.generate-avatar-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 30px rgba(251, 191, 36, 0.8);
+}
+
+.generate-avatar-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Holographic Avatar Container */
+.hologram-container {
+    display: none;
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 300px;
+    height: 400px;
+    z-index: 9999;
+}
+
+.hologram-container.active {
+    display: block;
+    animation: hologramAppear 1s ease;
+}
+
+@keyframes hologramAppear {
+    from {
+        opacity: 0;
+        transform: scale(0.5) translateY(100px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* Hologram Effect */
+.hologram-avatar {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    perspective: 1000px;
+}
+
+.hologram-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    animation: hologramFloat 4s ease-in-out infinite;
+}
+
+@keyframes hologramFloat {
+
+    0%,
+    100% {
+        transform: translateY(0) rotateY(0deg);
+    }
+
+    25% {
+        transform: translateY(-20px) rotateY(90deg);
+    }
+
+    50% {
+        transform: translateY(0) rotateY(180deg);
+    }
+
+    75% {
+        transform: translateY(-20px) rotateY(270deg);
+    }
+}
+
+.hologram-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter:
+        brightness(1.5) contrast(1.2) hue-rotate(200deg) drop-shadow(0 0 20px rgba(59, 130, 246, 0.8));
+    opacity: 0.9;
+    mix-blend-mode: screen;
+}
+
+/* Scan Lines Effect */
+.hologram-scanlines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(0deg,
+            rgba(0, 0, 0, 0.1) 0px,
+            rgba(0, 0, 0, 0.1) 2px,
+            transparent 2px,
+            transparent 4px);
+    pointer-events: none;
+    animation: scanlineMove 8s linear infinite;
+}
+
+@keyframes scanlineMove {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(20px);
+    }
+}
+
+/* Glow Effect */
+.hologram-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 120%;
+    height: 120%;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle,
+            rgba(59, 130, 246, 0.3) 0%,
+            transparent 70%);
+    animation: glowPulse 2s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes glowPulse {
+
+    0%,
+    100% {
+        opacity: 0.5;
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+}
+
+/* Hologram Badge */
+.hologram-badge {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+    color: #000;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    box-shadow: 0 0 20px rgba(251, 191, 36, 0.6);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Close Hologram Button */
+.hologram-close {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 30px;
+    height: 30px;
+    background: rgba(239, 68, 68, 0.9);
+    border: 2px solid #ef4444;
+    border-radius: 50%;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.hologram-close:hover {
+    background: #dc2626;
+    transform: rotate(90deg);
+}
+
+/* Loading State */
+.loading-spinner {
+    display: none;
+    text-align: center;
+    padding: 2rem;
+}
+
+.loading-spinner.active {
+    display: block;
+}
+
+.spinner {
+    border: 4px solid rgba(59, 130, 246, 0.2);
+    border-top: 4px solid #3b82f6;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 1rem;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .jedi-modal-content {
+        padding: 1.5rem;
+        max-width: 95%;
+    }
+
+    .jedi-modal-title {
+        font-size: 1.5rem;
+    }
+
+    .hologram-container {
+        width: 200px;
+        height: 300px;
+        bottom: 1rem;
+        right: 1rem;
+    }
+
+    .hologram-badge {
+        font-size: 0.7rem;
+        padding: 0.3rem 0.6rem;
+    }
+}
