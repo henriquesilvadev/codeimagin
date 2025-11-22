@@ -1,10 +1,11 @@
 describe('CodeImag.in E2E Tests', () => {
     beforeEach(() => {
         cy.visit('/')
-        // Dismiss cookie banner if it exists
-        cy.get('body').then($body => {
-            if ($body.find('.cookie-accept-btn').length > 0) {
-                cy.get('.cookie-accept-btn').first().click()
+        // Wait a bit for page to load and dismiss cookie banner if visible
+        cy.wait(500)
+        cy.get('.cookie-accept-btn').then($btn => {
+            if ($btn.is(':visible')) {
+                cy.wrap($btn).eq(0).click()
             }
         })
     })
