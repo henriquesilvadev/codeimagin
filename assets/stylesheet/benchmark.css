@@ -74,24 +74,58 @@
     overflow: visible;
 }
 
+/* SVG line and point styles */
 .line-path {
-    filter: drop-shadow(0 0 8px currentColor);
-    transition: stroke-width 0.3s ease, filter 0.3s ease;
+    stroke-width: 2;
+    filter: none;
+    transition: stroke-width 0.2s ease;
 }
 
 .line-path:hover {
-    stroke-width: 5 !important;
-    filter: drop-shadow(0 0 12px currentColor);
+    stroke-width: 4;
+    filter: drop-shadow(0 0 6px currentColor);
 }
 
 .data-point {
+    r: 4;
+    fill: currentColor;
+    stroke: #0f172a;
+    stroke-width: 1;
     cursor: pointer;
     transition: all 0.3s ease;
 }
 
 .data-point:hover {
-    r: 8;
-    filter: drop-shadow(0 0 8px currentColor);
+    r: 6;
+    filter: drop-shadow(0 0 6px currentColor);
+}
+
+/* OS buttons styling similar to legend tags */
+.benchmark-controls {
+    margin-bottom: 1.5rem;
+}
+
+.os-buttons {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.os-button {
+    padding: 0.4rem 0.8rem;
+    background: rgba(30, 41, 59, 0.8);
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    border-radius: 12px;
+    color: #e2e8f0;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.os-button:hover {
+    background: rgba(30, 41, 59, 0.95);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 /* Animations */
@@ -130,28 +164,25 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.5rem 1rem;
-    background: rgba(30, 41, 59, 0.6);
-    border-radius: 8px;
+    padding: 0.4rem 0.8rem;
+    background: rgba(30, 41, 59, 0.8);
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    border-radius: 12px;
     cursor: pointer;
-    transition: all 0.3s ease;
-    border: 2px solid transparent;
+    transition: all 0.2s ease;
     user-select: none;
+    color: #e2e8f0;
 }
 
 .legend-item:hover {
-    background: rgba(30, 41, 59, 0.9);
-    transform: translateY(-2px);
+    background: rgba(30, 41, 59, 0.95);
+    transform: translateY(-1px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 .legend-item.inactive {
-    opacity: 0.3;
-    filter: grayscale(1);
-}
-
-.legend-item.inactive:hover {
-    opacity: 0.5;
+    opacity: 0.4;
+    filter: grayscale(0.8);
 }
 
 .legend-color {
@@ -175,13 +206,11 @@
 .chart-tooltip {
     position: absolute;
     display: none;
-    background: rgba(15, 23, 42, 0.98);
-    backdrop-filter: blur(10px);
+    background: rgba(15, 23, 42, 0.95);
+    color: #e2e8f0;
+    padding: 0.75rem 1rem;
     border: 1px solid rgba(148, 163, 184, 0.2);
     border-radius: 8px;
-    padding: 0.75rem 1rem;
-    color: #e2e8f0;
-    font-size: 14px;
     pointer-events: none;
     z-index: 1000;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
