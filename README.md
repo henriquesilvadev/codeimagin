@@ -3,11 +3,15 @@
 ![Status do Projeto](https://img.shields.io/badge/Status-Em_Desenvolvimento-green)
 ![Licença](https://img.shields.io/badge/License-MIT-blue)
 [![CodeFactor](https://www.codefactor.io/repository/github/henriquesilvadev/codeimagin/badge)](https://www.codefactor.io/repository/github/henriquesilvadev/codeimagin)
+[![Cypress Cloud](https://img.shields.io/endpoint?url=https://cloud.cypress.io/badge/simple/pzc5fm&style=flat&logo=cypress)](https://cloud.cypress.io/projects/pzc5fm)
 
 > **Sua base de conhecimento dev rápida e intuitiva.**
 > Explore documentação, exemplos de código e conceitos fundamentais de diversas linguagens e tecnologias em um só lugar.
 
+![CodeImag.in Demo](https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExMWtuMXhjN2Fid3VoN2hqM3B3eWMxam5ubGFhdmlyb2swOXRtOGh3cCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/6mAVBNoiGB2mrroYyP/giphy.gif)
+
 ---
+
 
 ## 📖 Sobre o Projeto
 
@@ -26,31 +30,7 @@ O projeto foi construído com foco em:
 - 📱 **Totalmente Responsivo**: Layout adaptável para celulares, tablets e desktops.
 - ⚡ **PWA**: Instale o app e tenha acesso rápido direto da sua tela inicial.
 - 🎨 **Design Premium**: Interface inspirada em ferramentas profissionais, com modo escuro nativo.
-- 🧪 **Testes E2E**: Cobertura completa de testes automatizados com Cypress.
-
-## 🧪 Testes E2E
-
-[![Cypress Cloud](https://img.shields.io/endpoint?url=https://cloud.cypress.io/badge/simple/pzc5fm&style=flat&logo=cypress)](https://cloud.cypress.io/projects/pzc5fm)
-
-O projeto possui testes end-to-end automatizados com **Cypress**, garantindo a qualidade e funcionamento de todos os recursos:
-
-- ✅ Busca e navegação
-- ✅ Code Editor interativo
-- ✅ Mapa de criadores
-- ✅ Autenticação
-- ✅ Responsividade
-
-### 🎬 Demonstração dos Testes
-
-Veja os testes E2E rodando automaticamente no site em produção:
-
-https://github.com/user-attachments/assets/codeimagin-cypress-demo.mp4
-
-**Ver testes rodando**: [Cypress Cloud Dashboard](https://cloud.cypress.io/projects/pzc5fm) | [Vídeo local](cypress/videos/codeimagin.cy.js.mp4)
-
-### 🎥 Demonstração da Aplicação
-
-![CodeImag.in Demo](https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExMWtuMXhjN2Fid3VoN2hqM3B3eWMxam5ubGFhdmlyb2swOXRtOGh3cCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/6mAVBNoiGB2mrroYyP/giphy.gif)
+- 🧪 **Testes E2E**: Cobertura completa de testes automatizados com Cypress. [Ver documentação de testes →](TESTING.md)
 
 ## 🚀 Tecnologias Utilizadas
 
