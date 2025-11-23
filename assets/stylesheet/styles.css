@@ -3317,3 +3317,24 @@ main {
     transform: translateX(-50%) translateY(0);
   }
 }
+
+/* ===== LOADING SPINNER ===== */
+.loading-spinner {
+  width: 48px;
+  height: 48px;
+  border: 5px solid rgba(129, 43, 140, 0.2);
+  border-left-color: #822B8C;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 40px auto;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
