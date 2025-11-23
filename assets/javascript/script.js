@@ -187,7 +187,7 @@ class CodeImaginApp {
 
     this.elements.searchInput.value = `O que é ${query}?`;
     const container = this.getOrCreateArticleContainer();
-    container.innerHTML = '<p class="loading">Buscando...</p>';
+    container.innerHTML = '<div class="loading-spinner"></div>';
 
     try {
       const response = await fetch(CONFIG.API_URL, {
