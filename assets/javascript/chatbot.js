@@ -95,8 +95,8 @@ class Chatbot {
             this.addMessage(response, 'bot');
         } catch (error) {
             this.removeMessage(typingId);
-            this.addMessage('Desculpe, ocorreu um erro ao processar sua mensagem. Verifique sua chave de API.', 'bot error');
             console.error('Gemini API Error:', error);
+            this.addMessage(`Erro ao conectar com Gemini: ${error.message}. <br>Verifique o console para mais detalhes.`, 'bot error');
         } finally {
             this.input.disabled = false;
             this.input.focus();
