@@ -3,3 +3,7 @@ node_modules/
 cypress/videos/
 cypress/screenshots/
 .DS_Store
+
+
+
+assets/javascript/config.js
