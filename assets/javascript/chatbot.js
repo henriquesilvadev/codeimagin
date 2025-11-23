@@ -8,7 +8,7 @@ class Chatbot {
         //
         // Esta chave será revogada após a apresentação da demo.
         // Tenta pegar a chave do window.CONFIG (config.js), depois localStorage, senão usa a hardcoded (demo)
-        this.apiKey = window.CONFIG?.GEMINI_API_KEY || localStorage.getItem('GEMINI_API_KEY') || 'AIzaSyCeHmdAe3aBmWPMa5JvNgBuLg8tdvvSka8';
+        this.apiKey = 'AIzaSyAe6aB8LSAIYprBDVYu8bvXzDe03sXK3MI';
         // Usando modelo flash-latest que está disponível na API
         this.apiUrl = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent';
         this.isOpen = false;
