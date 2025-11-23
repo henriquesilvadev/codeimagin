@@ -7,8 +7,10 @@ class Chatbot {
         // em um backend seguro ou função serverless.
         //
         // Esta chave será revogada após a apresentação da demo.
-        this.apiKey = 'AIzaSyC1cHY4tsDoZpIJoJWP_y_47VaB9FcsmCs';
-        this.apiUrl = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent';
+        // Tenta pegar a chave do localStorage primeiro, senão usa a hardcoded (demo)
+        this.apiKey = localStorage.getItem('GEMINI_API_KEY') || 'AIzaSyC1cHY4tsDoZpIJoJWP_y_47VaB9FcsmCs';
+        // Usando modelo 1.5-flash que é mais estável para uso geral
+        this.apiUrl = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent';
         this.isOpen = false;
         this.messages = [];
 
