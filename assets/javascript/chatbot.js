@@ -8,7 +8,8 @@ class Chatbot {
         //
         // Esta chave será revogada após a apresentação da demo.
         // Tenta pegar a chave do localStorage primeiro, senão usa a hardcoded (demo)
-        this.apiKey = localStorage.getItem('GEMINI_API_KEY') || 'AIzaSyC1cHY4tsDoZpIJoJWP_y_47VaB9FcsmCs';
+        // MÁ PRÁTICA: Chave exposta para fins de DEMO. Em produção, use backend.
+        this.apiKey = localStorage.getItem('GEMINI_API_KEY') || 'AIzaSyCeHmdAe3aBmWPMa5JvNgBuLg8tdvvSka8';
         // Usando modelo 1.5-flash que é mais estável para uso geral
         this.apiUrl = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent';
         this.isOpen = false;
